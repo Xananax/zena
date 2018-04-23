@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import { nav, overlay, menu, open, menuItem, menuItems } from './Nav.module.css'
+import { nav, overlay, menu, title, open, menuItem, menuItems } from './Nav.module.css'
 import { onEscape } from './onKeyDown'
 
 export const Nav = ({ isOpen, children, toggle }) => (
@@ -7,10 +7,11 @@ export const Nav = ({ isOpen, children, toggle }) => (
     <div className={overlay} onClick={toggle}/>
     <div className={menu}>
       <div className={menuItems}>
+        <div className={menuItem}><h2 className={title}>Zena Assi</h2></div>
         { Children.map(children, (child,index) => <div className={menuItem} key={child.key || index }>{child}</div>)}
       </div>
     </div>
-    <button onClick={toggle}>...</button>
+    <button onClick={toggle}>☰</button>
   </nav>
 )
 

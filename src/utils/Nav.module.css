@@ -11,7 +11,7 @@
 }
 
 .open{
-  compose: nav;
+  composes: nav;
 }
 
 .overlay{
@@ -39,7 +39,10 @@
 }
 
 .menu{
+  display: flex;
+  justify-content: flex-start;
   transform-origin: center left;
+  flex-direction: column;
   transition: all .25s ease;
   z-index: 11;
   position: fixed;
@@ -57,6 +60,8 @@
 
 .menuItems{
   float:right;
+  width:12em;
+  padding:1em;
 }
 
 .menuItem{
@@ -65,19 +70,37 @@
   padding:.5em;
 }
 
+.title{
+  display: inline-block;
+  margin:0;
+}
+
 @media all and (min-width: 60em){
+  .overlay{
+    display: none;
+  }
+  .menu{
+    transform: translateX(0)
+  }
+}
+
+@media all and (min-width: 90em){
   .menu{
     left:0;
+    flex-direction: row;
+    justify-content: space-around;
     right:0;
     top:0;
-    height: 3em;
     bottom: auto;
     min-height: auto;
     width:100%;
-    display:flex;
-    justify-content: center;
     transform: translateX(0);
     box-shadow: 0 0 0.2em rgba(17,17,17,0.2);
+  }
+  .menuItems{
+    display:flex;
+    width:960px;
+    justify-content: space-evenly;
   }
   .menuItem{
     width:auto;

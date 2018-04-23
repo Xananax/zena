@@ -7,7 +7,7 @@ import signature from './images/signature.jpg'
 // import styles from './App.module.css';
 import assets from './assets'
 const tags = Object.keys(assets.tags)
-console.log(tags)
+
 class App extends Component {
   state = {
     image:'',
