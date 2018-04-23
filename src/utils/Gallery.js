@@ -1,0 +1,46 @@
+import React from 'react'
+import GalleryImage from './GalleryImage'
+import { galleryImage, gallery } from './Gallery.module.css'
+
+export class Gallery extends React.Component{
+  static getDerivedStateFromProps({ images }, prevState) {
+    if (images !== prevState.images) {
+      const newImages = { }
+      let hasNewImages = false
+      images.forEach( src => {
+        if(!(src in prevState.loaded)){
+          hasNewImages = true
+          newImages[src] = { status: 'none' }
+        }
+      })
+      if(hasNewImages){
+        const loaded = { ...prevState.loaded, ...newImages }
+        const newState = { images, loaded }
+        return newState
+      }
+    }
+    return null;
+  }
+  
+  state = { images:[],  loaded:{} }
+  
+  onSuccess = ({src}) => this.setImageStatus(src,'success')
+  onError = ({src}) => this.setImageStatus(src,'error')
+  onLoad = ({src}) => this.setImageStatus(src,'load')
+  setImageStatus = (src,status) => this.setState((prevState)=>({...prevState,loaded:{...prevState.loaded,[src]:{status}}}))
+
+  renderImage(src){
+    const { onSuccess, onError, onLoad } = this
+    const props = { onSuccess, onError, onLoad, src, key:src,  className:galleryImage }
+    return <GalleryImage alt="" {...props}/>
+  }
+  render(){
+    return (
+      <div className={gallery}>
+        { this.state.images.map(image=>this.renderImage(image))}
+      </div>
+    )
+  }
+}
+
+export default Gallery

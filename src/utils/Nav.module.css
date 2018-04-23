@@ -1,0 +1,83 @@
+.nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  overflow: hidden;
+  z-index: 10000;
+  transform-style: preserve-3d;
+  display: block;
+}
+
+.open{
+  compose: nav;
+}
+
+.overlay{
+  color: transparent;
+  width: 100%;
+  border-radius: 0;
+  background: rgba(0,0,0,0.2);
+  transition: opacity .3s ease, bottom 0s linear .3s;
+  position: fixed;
+  min-height: 100%;
+  display: inline-block;
+  transform: none;
+  box-shadow: inset 0 0 0 99em rgba(17,17,17,0.2);
+  user-select: none;
+  bottom: -1000em;
+  opacity:0
+}
+
+.open .overlay{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  opacity: 1;
+}
+
+.menu{
+  transform-origin: center left;
+  transition: all .25s ease;
+  z-index: 11;
+  position: fixed;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background: #fff;
+  transform: translateX(-100%)
+}
+
+.open .menu{
+  transform: translateX(0)
+}
+
+.menuItems{
+  float:right;
+}
+
+.menuItem{
+  width:100%;
+  display: inline-block;
+  padding:.5em;
+}
+
+@media all and (min-width: 60em){
+  .menu{
+    left:0;
+    right:0;
+    top:0;
+    height: 3em;
+    bottom: auto;
+    min-height: auto;
+    width:100%;
+    transform: translateX(0);
+    box-shadow: 0 0 0.2em rgba(17,17,17,0.2);
+  }
+  .menuItem{
+    width:auto;
+  }
+}

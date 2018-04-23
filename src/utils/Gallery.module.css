@@ -1,0 +1,15 @@
+.gallery{
+  max-width:60em;
+  background: green;
+  margin:0 auto
+}
+
+.galleryImage{
+  width:50rem;
+  margin:5rem;
+}
+
+.galleryImage img{
+  width:100%;
+  height:auto;
+}
