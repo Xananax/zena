@@ -3,20 +3,16 @@ import Gallery from './utils/Gallery'
 import Nav from './utils/Nav'
 import Image from './utils/Image'
 import signature from './images/signature.jpg'
-import styles from './App.module.css';
+// import styles from './App.module.css';
+import assets from './assets'
 
 class App extends Component {
   state = {
     image:'',
-    images:[]
+    images:assets.tags.portraits.map(({src})=>src)
   }
   componentDidMount(){
-    const images = []
-    for(let i = 1; i < 9; i++){
-      const src = './images/a0'+i+'.jpg'
-      images.push(src)
-    }
-    this.setState({images})
+
   }
   render() {
     return (
