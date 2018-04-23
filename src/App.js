@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import Gallery from './utils/Gallery'
 import Nav from './utils/Nav'
 import Image from './utils/Image'
+import { NavLink } from 'react-router-dom'
 import signature from './images/signature.jpg'
 // import styles from './App.module.css';
 import assets from './assets'
-
+const tags = Object.keys(assets.tags)
+console.log(tags)
 class App extends Component {
   state = {
     image:'',
@@ -19,10 +21,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Image src={signature} alt="logo" style={{width:100,height:100}} />
-          <h1 className="App-title">Welcome to React</h1>
         </header>
         <Gallery images={this.state.images}/>
-        <Nav/>
+        <Nav>
+          { tags.map(tag=><NavLink key={tag} to={tag}>{tag}</NavLink>)}
+        </Nav>
       </div>
     );
   }

@@ -74,6 +74,8 @@
     bottom: auto;
     min-height: auto;
     width:100%;
+    display:flex;
+    justify-content: center;
     transform: translateX(0);
     box-shadow: 0 0 0.2em rgba(17,17,17,0.2);
   }

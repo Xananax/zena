@@ -6,8 +6,9 @@ export const Nav = ({ isOpen, children, toggle }) => (
   <nav className={isOpen ? open : nav }>
     <div className={overlay} onClick={toggle}/>
     <div className={menu}>
-      <div className={menuItems}></div>
-      { Children.map(children, (child,index) => <div className={menuItem} key={child.key || index }>{child}</div>)}
+      <div className={menuItems}>
+        { Children.map(children, (child,index) => <div className={menuItem} key={child.key || index }>{child}</div>)}
+      </div>
     </div>
     <button onClick={toggle}>...</button>
   </nav>
@@ -25,9 +26,7 @@ export class Navigation extends React.Component{
     const { isOpen } = this.state
     return (
       <Nav isOpen={isOpen} toggle={this.toggle}>
-        <a href="/">Home</a>
-        <a href="/">Galleries</a>
-        <a href="/">Tatati</a>
+        { this.props.children }
       </Nav>
     )
   }

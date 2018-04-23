@@ -13,16 +13,21 @@ files.types.image
     return file
   })
 
-for(const dir in files.directories){
+const newDirs = {}
+Object.keys(files.directories).forEach(dir=>{
   const list = files.directories[dir]
-  delete files.directories[dir]
   const key = removePath(dir)
-  files.directories[key] = convertList(list)
-}
+  newDirs[key] = convertList(list)
+})
+files.directories = newDirs
 
-for(const tag in files.tags){
+const newTags = {}
+Object.keys(files.tags).forEach(tag=>{
   const list = files.tags[tag]
-  files.tags[tag] = convertList(list)
-}
+  if(!/src|images/.test(tag)){ 
+    newTags[tag] = convertList(list)
+  }
+})
+files.tags = newTags
 
 module.exports = files
