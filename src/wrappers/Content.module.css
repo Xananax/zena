@@ -1,3 +1,17 @@
 .content{
-  
+  width: 60em;
+  margin:7em auto;
+}
+
+@media all and (min-width: 60em){
+  .content{
+    padding-left:12em;
+  }
+}
+
+
+@media all and (min-width: 76em){
+  .content{
+    margin:7em auto;
+  }
 }

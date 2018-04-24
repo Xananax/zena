@@ -1,15 +1,17 @@
 .gallery{
-  max-width:60em;
-  background: green;
+  max-width:100%;
   margin:0 auto
 }
 
+.galleryItem{
+  padding:2em;
+  box-sizing: border-box;
+}
+
 .galleryImage{
-  width:50rem;
-  margin:5rem;
+  width:100%;
 }
 
 .galleryImage img{
-  width:100%;
-  height:auto;
+  
 }

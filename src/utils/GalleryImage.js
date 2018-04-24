@@ -18,9 +18,23 @@ export class GalleryImage extends React.Component{
   whenInView = (inView) => {
     this.setState({inView})
   }
+  mixImageProps(imageProps,initialWidth,initialHeight){
+    if(typeof initialWidth !== 'undefined' && typeof initialHeight !== 'undefined'){
+      const ratio = 100 / initialWidth
+      const proportionalHeight = (( initialHeight * ratio ) )+'%'
+      return {...imageProps,initialWidth,initialHeight,proportionalHeight}
+    }
+    else if(typeof initialWidth !== 'undefined'){
+      return {...imageProps,initialWidth}
+    }
+    else if(typeof initialHeight !== 'undefined'){
+      return {...imageProps,initialHeight}
+    }
+    return imageProps
+  }
   render(){
     const { inView:load } = this.state
-    const { alt, src, onSuccess, onError, onLoad, className } = this.props
+    const { alt, src, onSuccess, onError, onLoad, className, width, height } = this.props
     const { imageRef } = this
     const lazy = true
     
@@ -29,7 +43,7 @@ export class GalleryImage extends React.Component{
     return (
       <ImageLoader {...props}>
         { 
-          (imageProps) => <Image {...imageProps}/>
+          (imageProps) => <Image {...this.mixImageProps(imageProps,width,height) }/>
         }
       </ImageLoader>
     )

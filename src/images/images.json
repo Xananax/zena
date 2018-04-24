@@ -33,7 +33,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 753,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -68,7 +70,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 629,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -103,7 +107,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 628,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -138,7 +144,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 756,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -173,7 +181,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1024,
+      "height": 513
     },
     {
       "dev": 2053,
@@ -208,7 +218,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1024,
+      "height": 512
     },
     {
       "dev": 2053,
@@ -243,7 +255,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1024,
+      "height": 619
     },
     {
       "dev": 2053,
@@ -278,7 +292,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 752,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -313,7 +329,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 770,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -348,7 +366,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 755,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -383,7 +403,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 757,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -418,7 +440,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 747,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -453,7 +477,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 768,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -488,7 +514,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 768,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -523,7 +551,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 768,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -558,7 +588,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 779,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -593,7 +625,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 748,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -628,7 +662,9 @@
         "images",
         "bouquets"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 764,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -663,7 +699,9 @@
         "images",
         "cities"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 954,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -698,7 +736,9 @@
         "images",
         "cities"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1024,
+      "height": 577
     },
     {
       "dev": 2053,
@@ -733,7 +773,9 @@
         "images",
         "cities"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1024,
+      "height": 509
     },
     {
       "dev": 2053,
@@ -768,7 +810,9 @@
         "images",
         "cities"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1024,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -803,7 +847,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 100,
+      "height": 100
     },
     {
       "dev": 2053,
@@ -838,7 +884,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 100,
+      "height": 100
     },
     {
       "dev": 2053,
@@ -873,7 +921,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 100,
+      "height": 100
     },
     {
       "dev": 2053,
@@ -908,7 +958,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 100,
+      "height": 100
     },
     {
       "dev": 2053,
@@ -978,7 +1030,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 100,
+      "height": 100
     },
     {
       "dev": 2053,
@@ -1013,7 +1067,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 589,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1048,7 +1104,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 576,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1083,322 +1141,9 @@
         "images",
         "installation"
       ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4247530,
-      "size": 509084,
-      "blocks": 1000,
-      "atimeMs": 1524459321979.3733,
-      "mtimeMs": 1511409061102.139,
-      "ctimeMs": 1524459321950.373,
-      "birthtimeMs": 1524459321950.373,
-      "atime": "2018-04-23T04:55:21.979Z",
-      "mtime": "2017-11-23T03:51:01.102Z",
-      "ctime": "2018-04-23T04:55:21.950Z",
-      "birthtime": "2018-04-23T04:55:21.950Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait1.jpg",
-      "filePath": "./src/images/portraits/portrait1.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait1",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267300,
-      "size": 407737,
-      "blocks": 800,
-      "atimeMs": 1524460950961.3,
-      "mtimeMs": 1511409059275.457,
-      "ctimeMs": 1524459321979.3733,
-      "birthtimeMs": 1524459321979.3733,
-      "atime": "2018-04-23T05:22:30.961Z",
-      "mtime": "2017-11-23T03:50:59.275Z",
-      "ctime": "2018-04-23T04:55:21.979Z",
-      "birthtime": "2018-04-23T04:55:21.979Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait2.jpg",
-      "filePath": "./src/images/portraits/portrait2.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait2",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267301,
-      "size": 365958,
-      "blocks": 720,
-      "atimeMs": 1524460950961.3,
-      "mtimeMs": 1511409058578.785,
-      "ctimeMs": 1524459321981.3733,
-      "birthtimeMs": 1524459321981.3733,
-      "atime": "2018-04-23T05:22:30.961Z",
-      "mtime": "2017-11-23T03:50:58.579Z",
-      "ctime": "2018-04-23T04:55:21.981Z",
-      "birthtime": "2018-04-23T04:55:21.981Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait3.jpg",
-      "filePath": "./src/images/portraits/portrait3.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait3",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267303,
-      "size": 352394,
-      "blocks": 696,
-      "atimeMs": 1524459322020.3738,
-      "mtimeMs": 1511409058115.448,
-      "ctimeMs": 1524459322017.3738,
-      "birthtimeMs": 1524459322017.3738,
-      "atime": "2018-04-23T04:55:22.020Z",
-      "mtime": "2017-11-23T03:50:58.115Z",
-      "ctime": "2018-04-23T04:55:22.017Z",
-      "birthtime": "2018-04-23T04:55:22.017Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait4.jpg",
-      "filePath": "./src/images/portraits/portrait4.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait4",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267304,
-      "size": 203058,
-      "blocks": 400,
-      "atimeMs": 1524460950961.3,
-      "mtimeMs": 1511409060485.467,
-      "ctimeMs": 1524459322019.3738,
-      "birthtimeMs": 1524459322019.3738,
-      "atime": "2018-04-23T05:22:30.961Z",
-      "mtime": "2017-11-23T03:51:00.485Z",
-      "ctime": "2018-04-23T04:55:22.019Z",
-      "birthtime": "2018-04-23T04:55:22.019Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait5.jpg",
-      "filePath": "./src/images/portraits/portrait5.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait5",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267305,
-      "size": 239689,
-      "blocks": 472,
-      "atimeMs": 1524459322029.3738,
-      "mtimeMs": 1511409060322.133,
-      "ctimeMs": 1524459322028.3738,
-      "birthtimeMs": 1524459322028.3738,
-      "atime": "2018-04-23T04:55:22.029Z",
-      "mtime": "2017-11-23T03:51:00.322Z",
-      "ctime": "2018-04-23T04:55:22.028Z",
-      "birthtime": "2018-04-23T04:55:22.028Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait6.jpg",
-      "filePath": "./src/images/portraits/portrait6.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait6",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267306,
-      "size": 207101,
-      "blocks": 408,
-      "atimeMs": 1524459322038.374,
-      "mtimeMs": 1511409059885.462,
-      "ctimeMs": 1524459322036.374,
-      "birthtimeMs": 1524459322036.374,
-      "atime": "2018-04-23T04:55:22.038Z",
-      "mtime": "2017-11-23T03:50:59.885Z",
-      "ctime": "2018-04-23T04:55:22.036Z",
-      "birthtime": "2018-04-23T04:55:22.036Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait7.jpg",
-      "filePath": "./src/images/portraits/portrait7.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait7",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267307,
-      "size": 421159,
-      "blocks": 824,
-      "atimeMs": 1524459322065.3743,
-      "mtimeMs": 1511409059648.794,
-      "ctimeMs": 1524459322037.374,
-      "birthtimeMs": 1524459322037.374,
-      "atime": "2018-04-23T04:55:22.065Z",
-      "mtime": "2017-11-23T03:50:59.649Z",
-      "ctime": "2018-04-23T04:55:22.037Z",
-      "birthtime": "2018-04-23T04:55:22.037Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait8.jpg",
-      "filePath": "./src/images/portraits/portrait8.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait8",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 4267308,
-      "size": 613318,
-      "blocks": 1200,
-      "atimeMs": 1524459322049.374,
-      "mtimeMs": 1511409058895.454,
-      "ctimeMs": 1524459322038.374,
-      "birthtimeMs": 1524459322038.374,
-      "atime": "2018-04-23T04:55:22.049Z",
-      "mtime": "2017-11-23T03:50:58.895Z",
-      "ctime": "2018-04-23T04:55:22.038Z",
-      "birthtime": "2018-04-23T04:55:22.038Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "portrait9.jpg",
-      "filePath": "./src/images/portraits/portrait9.jpg",
-      "depth": 20,
-      "parentDirs": "src/images/portraits",
-      "parent": "portraits",
-      "extension": "jpg",
-      "basename": "portrait9",
-      "tags": [
-        "src",
-        "images",
-        "portraits"
-      ],
-      "type": "image"
+      "type": "image",
+      "width": 768,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1433,7 +1178,9 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 160,
+      "height": 160
     },
     {
       "dev": 2053,
@@ -1468,7 +1215,9 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 160,
+      "height": 160
     },
     {
       "dev": 2053,
@@ -1503,7 +1252,9 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 160,
+      "height": 160
     },
     {
       "dev": 2053,
@@ -1538,7 +1289,9 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 160,
+      "height": 160
     },
     {
       "dev": 2053,
@@ -1573,7 +1326,9 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 160,
+      "height": 160
     },
     {
       "dev": 2053,
@@ -1608,7 +1363,9 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 160,
+      "height": 160
     },
     {
       "dev": 2053,
@@ -1643,7 +1400,342 @@
         "images",
         "logos"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 161,
+      "height": 160
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4247530,
+      "size": 509084,
+      "blocks": 1000,
+      "atimeMs": 1524459321979.3733,
+      "mtimeMs": 1511409061102.139,
+      "ctimeMs": 1524459321950.373,
+      "birthtimeMs": 1524459321950.373,
+      "atime": "2018-04-23T04:55:21.979Z",
+      "mtime": "2017-11-23T03:51:01.102Z",
+      "ctime": "2018-04-23T04:55:21.950Z",
+      "birthtime": "2018-04-23T04:55:21.950Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait1.jpg",
+      "filePath": "./src/images/portraits/portrait1.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait1",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 768,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267300,
+      "size": 407737,
+      "blocks": 800,
+      "atimeMs": 1524460950961.3,
+      "mtimeMs": 1511409059275.457,
+      "ctimeMs": 1524459321979.3733,
+      "birthtimeMs": 1524459321979.3733,
+      "atime": "2018-04-23T05:22:30.961Z",
+      "mtime": "2017-11-23T03:50:59.275Z",
+      "ctime": "2018-04-23T04:55:21.979Z",
+      "birthtime": "2018-04-23T04:55:21.979Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait2.jpg",
+      "filePath": "./src/images/portraits/portrait2.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait2",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 574,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267301,
+      "size": 365958,
+      "blocks": 720,
+      "atimeMs": 1524460950961.3,
+      "mtimeMs": 1511409058578.785,
+      "ctimeMs": 1524459321981.3733,
+      "birthtimeMs": 1524459321981.3733,
+      "atime": "2018-04-23T05:22:30.961Z",
+      "mtime": "2017-11-23T03:50:58.579Z",
+      "ctime": "2018-04-23T04:55:21.981Z",
+      "birthtime": "2018-04-23T04:55:21.981Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait3.jpg",
+      "filePath": "./src/images/portraits/portrait3.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait3",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 384,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267303,
+      "size": 352394,
+      "blocks": 696,
+      "atimeMs": 1524459322020.3738,
+      "mtimeMs": 1511409058115.448,
+      "ctimeMs": 1524459322017.3738,
+      "birthtimeMs": 1524459322017.3738,
+      "atime": "2018-04-23T04:55:22.020Z",
+      "mtime": "2017-11-23T03:50:58.115Z",
+      "ctime": "2018-04-23T04:55:22.017Z",
+      "birthtime": "2018-04-23T04:55:22.017Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait4.jpg",
+      "filePath": "./src/images/portraits/portrait4.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait4",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 384,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267304,
+      "size": 203058,
+      "blocks": 400,
+      "atimeMs": 1524460950961.3,
+      "mtimeMs": 1511409060485.467,
+      "ctimeMs": 1524459322019.3738,
+      "birthtimeMs": 1524459322019.3738,
+      "atime": "2018-04-23T05:22:30.961Z",
+      "mtime": "2017-11-23T03:51:00.485Z",
+      "ctime": "2018-04-23T04:55:22.019Z",
+      "birthtime": "2018-04-23T04:55:22.019Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait5.jpg",
+      "filePath": "./src/images/portraits/portrait5.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait5",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 226,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267305,
+      "size": 239689,
+      "blocks": 472,
+      "atimeMs": 1524459322029.3738,
+      "mtimeMs": 1511409060322.133,
+      "ctimeMs": 1524459322028.3738,
+      "birthtimeMs": 1524459322028.3738,
+      "atime": "2018-04-23T04:55:22.029Z",
+      "mtime": "2017-11-23T03:51:00.322Z",
+      "ctime": "2018-04-23T04:55:22.028Z",
+      "birthtime": "2018-04-23T04:55:22.028Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait6.jpg",
+      "filePath": "./src/images/portraits/portrait6.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait6",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 223,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267306,
+      "size": 207101,
+      "blocks": 408,
+      "atimeMs": 1524459322038.374,
+      "mtimeMs": 1511409059885.462,
+      "ctimeMs": 1524459322036.374,
+      "birthtimeMs": 1524459322036.374,
+      "atime": "2018-04-23T04:55:22.038Z",
+      "mtime": "2017-11-23T03:50:59.885Z",
+      "ctime": "2018-04-23T04:55:22.036Z",
+      "birthtime": "2018-04-23T04:55:22.036Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait7.jpg",
+      "filePath": "./src/images/portraits/portrait7.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait7",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 221,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267307,
+      "size": 421159,
+      "blocks": 824,
+      "atimeMs": 1524459322065.3743,
+      "mtimeMs": 1511409059648.794,
+      "ctimeMs": 1524459322037.374,
+      "birthtimeMs": 1524459322037.374,
+      "atime": "2018-04-23T04:55:22.065Z",
+      "mtime": "2017-11-23T03:50:59.649Z",
+      "ctime": "2018-04-23T04:55:22.037Z",
+      "birthtime": "2018-04-23T04:55:22.037Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait8.jpg",
+      "filePath": "./src/images/portraits/portrait8.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait8",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 183,
+      "height": 768
+    },
+    {
+      "dev": 2053,
+      "mode": 33261,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4267308,
+      "size": 613318,
+      "blocks": 1200,
+      "atimeMs": 1524459322049.374,
+      "mtimeMs": 1511409058895.454,
+      "ctimeMs": 1524459322038.374,
+      "birthtimeMs": 1524459322038.374,
+      "atime": "2018-04-23T04:55:22.049Z",
+      "mtime": "2017-11-23T03:50:58.895Z",
+      "ctime": "2018-04-23T04:55:22.038Z",
+      "birthtime": "2018-04-23T04:55:22.038Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "portrait9.jpg",
+      "filePath": "./src/images/portraits/portrait9.jpg",
+      "depth": 20,
+      "parentDirs": "src/images/portraits",
+      "parent": "portraits",
+      "extension": "jpg",
+      "basename": "portrait9",
+      "tags": [
+        "src",
+        "images",
+        "portraits"
+      ],
+      "type": "image",
+      "width": 770,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1678,7 +1770,9 @@
         "images",
         "still-nature"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 753,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1713,7 +1807,9 @@
         "images",
         "still-nature"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 768,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1748,7 +1844,9 @@
         "images",
         "still-nature"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 764,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1783,7 +1881,9 @@
         "images",
         "zena"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1378,
+      "height": 425
     },
     {
       "dev": 2053,
@@ -1818,7 +1918,9 @@
         "images",
         "zena"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 768,
+      "height": 768
     },
     {
       "dev": 2053,
@@ -1853,7 +1955,9 @@
         "images",
         "zena"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1266,
+      "height": 1098
     },
     {
       "dev": 2053,
@@ -1958,16 +2062,16 @@
       "rdev": 0,
       "blksize": 4096,
       "ino": 4213799,
-      "size": 66567,
+      "size": 69267,
       "blocks": 136,
-      "atimeMs": 1524461725284.7693,
-      "mtimeMs": 1524461725000.7673,
-      "ctimeMs": 1524461725000.7673,
-      "birthtimeMs": 1524461725000.7673,
-      "atime": "2018-04-23T05:35:25.285Z",
-      "mtime": "2018-04-23T05:35:25.001Z",
-      "ctime": "2018-04-23T05:35:25.001Z",
-      "birthtime": "2018-04-23T05:35:25.001Z",
+      "atimeMs": 1524543414535.331,
+      "mtimeMs": 1524543414256.3286,
+      "ctimeMs": 1524543414256.3286,
+      "birthtimeMs": 1524543414256.3286,
+      "atime": "2018-04-24T04:16:54.535Z",
+      "mtime": "2018-04-24T04:16:54.256Z",
+      "ctime": "2018-04-24T04:16:54.256Z",
+      "birthtime": "2018-04-24T04:16:54.256Z",
       "isFile": true,
       "isDirectory": false,
       "filename": "images.json",
@@ -2127,11 +2231,11 @@
       "ino": 4267166,
       "size": 916159,
       "blocks": 1792,
-      "atimeMs": 1524395998372.5999,
+      "atimeMs": 1524510114005.1223,
       "mtimeMs": 1511409082342.315,
       "ctimeMs": 1524395998370.5999,
       "birthtimeMs": 1524395998370.5999,
-      "atime": "2018-04-22T11:19:58.373Z",
+      "atime": "2018-04-23T19:01:54.005Z",
       "mtime": "2017-11-23T03:51:22.342Z",
       "ctime": "2018-04-22T11:19:58.371Z",
       "birthtime": "2018-04-22T11:19:58.371Z",
@@ -2148,7 +2252,9 @@
         "src",
         "images"
       ],
-      "type": "image"
+      "type": "image",
+      "width": 1266,
+      "height": 1098
     },
     {
       "dev": 2053,
@@ -2227,6 +2333,40 @@
         "portrait-by-gilbert-hage.resized.jpg",
         "signature.jpg"
       ]
+    },
+    {
+      "dev": 2053,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 1000,
+      "gid": 1000,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 4213293,
+      "size": 82188,
+      "blocks": 168,
+      "atimeMs": 1524521210558.67,
+      "mtimeMs": 1524521210459.6692,
+      "ctimeMs": 1524521210459.6692,
+      "birthtimeMs": 1524521210459.6692,
+      "atime": "2018-04-23T22:06:50.559Z",
+      "mtime": "2018-04-23T22:06:50.460Z",
+      "ctime": "2018-04-23T22:06:50.460Z",
+      "birthtime": "2018-04-23T22:06:50.460Z",
+      "isFile": true,
+      "isDirectory": false,
+      "filename": "zena.svg",
+      "filePath": "./src/images/zena.svg",
+      "depth": 10,
+      "parentDirs": "src/images",
+      "parent": "images",
+      "extension": "svg",
+      "basename": "zena",
+      "tags": [
+        "src",
+        "images"
+      ],
+      "type": "vectorial"
     }
   ],
   "tags": {
@@ -2292,7 +2432,8 @@
       58,
       59,
       60,
-      61
+      61,
+      62
     ],
     "images": [
       0,
@@ -2356,7 +2497,8 @@
       58,
       59,
       60,
-      61
+      61,
+      62
     ],
     "bouquets": [
       0,
@@ -2395,18 +2537,18 @@
       29,
       30
     ],
-    "portraits": [
+    "logos": [
       31,
       32,
       33,
       34,
       35,
       36,
-      37,
-      38,
-      39
+      37
     ],
-    "logos": [
+    "portraits": [
+      38,
+      39,
       40,
       41,
       42,
@@ -2496,6 +2638,9 @@
     ],
     "application": [
       55
+    ],
+    "vectorial": [
+      62
     ]
   },
   "directories": {
@@ -2536,18 +2681,18 @@
       29,
       30
     ],
-    "src/images/portraits": [
+    "src/images/logos": [
       31,
       32,
       33,
       34,
       35,
       36,
-      37,
-      38,
-      39
+      37
     ],
-    "src/images/logos": [
+    "src/images/portraits": [
+      38,
+      39,
       40,
       41,
       42,
@@ -2575,7 +2720,8 @@
       58,
       59,
       60,
-      61
+      61,
+      62
     ]
   },
   "filenames": {
@@ -2672,52 +2818,52 @@
     "installation9.jpg": [
       30
     ],
-    "portrait1.jpg": [
+    "logo1.png": [
       31
     ],
-    "portrait2.jpg": [
+    "logo2.png": [
       32
     ],
-    "portrait3.jpg": [
+    "logo3.png": [
       33
     ],
-    "portrait4.jpg": [
+    "logo4.png": [
       34
     ],
-    "portrait5.jpg": [
+    "logo5.png": [
       35
     ],
-    "portrait6.jpg": [
+    "logo6.png": [
       36
     ],
-    "portrait7.jpg": [
+    "logo7.png": [
       37
     ],
-    "portrait8.jpg": [
+    "portrait1.jpg": [
       38
     ],
-    "portrait9.jpg": [
+    "portrait2.jpg": [
       39
     ],
-    "logo1.png": [
+    "portrait3.jpg": [
       40
     ],
-    "logo2.png": [
+    "portrait4.jpg": [
       41
     ],
-    "logo3.png": [
+    "portrait5.jpg": [
       42
     ],
-    "logo4.png": [
+    "portrait6.jpg": [
       43
     ],
-    "logo5.png": [
+    "portrait7.jpg": [
       44
     ],
-    "logo6.png": [
+    "portrait8.jpg": [
       45
     ],
-    "logo7.png": [
+    "portrait9.jpg": [
       46
     ],
     "stillnature1.jpg": [
@@ -2762,6 +2908,9 @@
     ],
     "zena": [
       61
+    ],
+    "zena.svg": [
+      62
     ]
   },
   "depths": {
@@ -2774,7 +2923,8 @@
       58,
       59,
       60,
-      61
+      61,
+      62
     ],
     "15": [
       50,
@@ -2782,13 +2932,13 @@
       52
     ],
     "16": [
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
     ],
     "17": [
       18,
@@ -2817,15 +2967,15 @@
       17
     ],
     "20": [
-      31,
-      32,
-      33,
-      34,
-      35,
-      36,
-      37,
       38,
-      39
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46
     ],
     "23": [
       22,
@@ -2907,7 +3057,8 @@
       51,
       52,
       55,
-      59
+      59,
+      62
     ]
   }
 }

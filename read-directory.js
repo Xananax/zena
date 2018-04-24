@@ -2,7 +2,7 @@
 // vi:syntax=js
 
 const fs = require('fs')
-
+var sizeOf = require('image-size');
 const log = console.log.bind(console)
 const err = console.error.bind(console)
 
@@ -35,7 +35,19 @@ const readSubDir = (path,fileList=[],recursion=100) => recursion ? new Promise((
             { return readSubDir(file.filePath,fileList,recursion-1)
                 .then( (files) => ({ ...file, type:'directory', files:files.map(({filename})=>filename) } ))
             }
-            return ({...file, type:getType(file.extension)})
+            else{
+              const type = getType(file.extension)
+              if(type === 'image'){
+                return new Promise((ok, no)=>{
+                  sizeOf(filePath, (err, { width, height }) => {
+                    if(err){ return no(err) }
+                    const image = {...file, type, width, height}
+                    return ok(image)
+                  });
+                })
+              }
+              return ({...file, type})
+            }
         })
     }))
     .then( list => {
@@ -72,7 +84,7 @@ const buildIndexes = (items) => {
     if(!depths[depth]){depths[depth] = []}
     if(!types[type]){types[type] = []}
     if(isDirectory){ dirs.push(i)}else{files.push(i)}
-    tgs.forEach(tag=>{tagstagstags
+    tgs.forEach(tag=>{
       if(!tags[tag]){tags[tag] = []}
       tags[tag].push(i)
     })

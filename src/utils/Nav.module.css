@@ -1,5 +1,6 @@
 .nav{
   position: fixed;
+  font-size:1.5em;
   top: 0;
   left: 0;
   right: 0;
@@ -70,12 +71,23 @@
   padding:.5em;
 }
 
-.title{
+.header{
+  display: inline-block
+}
+
+.header > img, .header .image{
+  margin:0;
+}
+
+.header h1, .header h2, .header h3{
   display: inline-block;
   margin:0;
 }
 
 @media all and (min-width: 60em){
+  .nav{
+    font-size:1em;
+  }
   .overlay{
     display: none;
   }
@@ -99,10 +111,14 @@
   }
   .menuItems{
     display:flex;
-    width:960px;
+    width:60em;
     justify-content: space-evenly;
   }
   .menuItem{
+    width:auto;
+  }
+  .header img{
+    height:2em;
     width:auto;
   }
 }

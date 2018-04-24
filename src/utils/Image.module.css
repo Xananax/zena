@@ -6,6 +6,20 @@
   background:linear-gradient(#111,#222)
 }
 
+.image img{
+  margin-bottom: 0;
+}
+
+.inverted{
+  composes:image;
+  background:linear-gradient(#ddd,#eee)
+}
+
+.transparent{
+  composes:image;
+  background:transparent;
+}
+
 .stretch{
   position: absolute;
   top:0;

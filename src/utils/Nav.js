@@ -1,13 +1,17 @@
 import React, { Children } from 'react'
-import { nav, overlay, menu, title, open, menuItem, menuItems } from './Nav.module.css'
+import { nav, overlay, image, menu, header, open, menuItem, menuItems } from './Nav.module.css'
 import { onEscape } from './onKeyDown'
 
-export const Nav = ({ isOpen, children, toggle }) => (
+export const Nav = ({ isOpen, children, toggle, title, image:src }) => (
   <nav className={isOpen ? open : nav }>
     <div className={overlay} onClick={toggle}/>
     <div className={menu}>
       <div className={menuItems}>
-        <div className={menuItem}><h2 className={title}>Zena Assi</h2></div>
+        { (title || src) && (
+          <div className={header}>
+            <img className={image} src={src} alt={title}/>
+          </div>
+        )}
         { Children.map(children, (child,index) => <div className={menuItem} key={child.key || index }>{child}</div>)}
       </div>
     </div>
@@ -25,10 +29,9 @@ export class Navigation extends React.Component{
   }
   render(){
     const { isOpen } = this.state
+    const props = {...this.props,  isOpen, toggle:this.toggle}
     return (
-      <Nav isOpen={isOpen} toggle={this.toggle}>
-        { this.props.children }
-      </Nav>
+      <Nav {...props}/>
     )
   }
 }
