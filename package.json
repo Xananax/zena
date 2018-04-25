@@ -2,8 +2,10 @@
   "name": "zena",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://xananax.github.io/zena",
   "dependencies": {
     "classnames": "^2.2.5",
+    "gh-pages": "^1.1.0",
     "image-size": "^0.6.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -17,10 +19,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "assets:clean":"rm ./src/assets/articles.js && rm ./src/assets/images.js",
-    "assets:articles":"cd ./src/assets/ && node read-directory.js ./articles ./articles.js",
-    "assets:images":"cd ./src/assets/ && node read-directory.js ./images ./images.js",
-    "assets":"npm run assets:articles && npm run assets:images"
+    "assets:clean": "rm ./src/assets/articles.js && rm ./src/assets/images.js",
+    "assets:articles": "cd ./src/assets/ && node read-directory.js ./articles ./articles.js",
+    "assets:images": "cd ./src/assets/ && node read-directory.js ./images ./images.js",
+    "assets": "npm run assets:articles && npm run assets:images",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "development": [
