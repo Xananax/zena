@@ -34,7 +34,7 @@ export class GalleryImage extends React.Component{
   }
   render(){
     const { inView:load } = this.state
-    const { alt, src, onSuccess, onError, onLoad, className, width, height } = this.props
+    const { alt, src, onSuccess, onError, onLoad, className, width, height, caption } = this.props
     const { imageRef } = this
     const lazy = true
     
@@ -43,7 +43,11 @@ export class GalleryImage extends React.Component{
     return (
       <ImageLoader {...props}>
         { 
-          (imageProps) => <Image {...this.mixImageProps(imageProps,width,height) }/>
+          (imageProps) => 
+            <>
+              <Image {...this.mixImageProps(imageProps,width,height) }/>
+              <p>{ caption }</p>
+            </>
         }
       </ImageLoader>
     )

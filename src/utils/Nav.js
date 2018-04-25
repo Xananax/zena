@@ -9,7 +9,7 @@ export const Nav = ({ isOpen, children, toggle, title, image:src }) => (
       <div className={menuItems}>
         { (title || src) && (
           <div className={header}>
-            <img className={image} src={src} alt={title}/>
+            <img className={image}  src={src} alt={title}/>
           </div>
         )}
         { Children.map(children, (child,index) => <div className={menuItem} key={child.key || index }>{child}</div>)}

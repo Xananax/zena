@@ -1,7 +1,6 @@
 .exhibition{
   display: flex;
-  max-width:38em;
-  margin:0 auto;
+  max-width:42em;
   justify-content: space-between;
   position: relative;
 }
@@ -24,7 +23,7 @@
 }
 
 .image{
-  width:50%;
+  width:19em;
   height:100%;
   position: absolute;
   right:0;

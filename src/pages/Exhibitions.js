@@ -5,7 +5,7 @@ import { exhibition, image, info, galleryName, galleryDate, galleryLocation } fr
 import assets from '../assets'
 
 export const Exhibitions = () => (
-  <Content className="">
+  <Content className="" title="Events & Exhibitions">
     <article className={exhibition}>
       <div className={info}>
         <h2 className={galleryName}>J.Cacciola Gallery</h2>

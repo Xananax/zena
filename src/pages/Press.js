@@ -8,7 +8,7 @@ export const DocumentLink = ({extension,title,src}) => {
 }
 
 export const Press = () => (
-  <Content>
+  <Content title="Press & Media">
     <div className={press}>
       <p>
       { articles.types.document.map((doc)=><DocumentLink {...doc}/>) }
