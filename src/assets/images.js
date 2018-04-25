@@ -800,258 +800,6 @@ export default {
       "gid": 1000,
       "rdev": 0,
       "blksize": 4096,
-      "ino": 5379294,
-      "size": 2676,
-      "blocks": 8,
-      "atimeMs": 1524625318122.1577,
-      "mtimeMs": 1511409088815.701,
-      "ctimeMs": 1524459079068.034,
-      "birthtimeMs": 1524459079068.034,
-      "atime": "2018-04-25T03:01:58.122Z",
-      "mtime": "2017-11-23T03:51:28.816Z",
-      "ctime": "2018-04-23T04:51:19.068Z",
-      "birthtime": "2018-04-23T04:51:19.068Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo1.png",
-      "filePath": "./images/logos/logo1.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo1",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 160,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5379293,
-      "size": 2929,
-      "blocks": 8,
-      "atimeMs": 1524625318098.8242,
-      "mtimeMs": 1511409088749.034,
-      "ctimeMs": 1524459078902.0322,
-      "birthtimeMs": 1524459078902.0322,
-      "atime": "2018-04-25T03:01:58.099Z",
-      "mtime": "2017-11-23T03:51:28.749Z",
-      "ctime": "2018-04-23T04:51:18.902Z",
-      "birthtime": "2018-04-23T04:51:18.902Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo2.png",
-      "filePath": "./images/logos/logo2.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo2",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 160,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5379291,
-      "size": 2795,
-      "blocks": 8,
-      "atimeMs": 1524625318122.1577,
-      "mtimeMs": 1511409088289.03,
-      "ctimeMs": 1524459078737.0308,
-      "birthtimeMs": 1524459078737.0308,
-      "atime": "2018-04-25T03:01:58.122Z",
-      "mtime": "2017-11-23T03:51:28.289Z",
-      "ctime": "2018-04-23T04:51:18.737Z",
-      "birthtime": "2018-04-23T04:51:18.737Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo3.png",
-      "filePath": "./images/logos/logo3.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo3",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 160,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5379290,
-      "size": 2565,
-      "blocks": 8,
-      "atimeMs": 1524625318102.1577,
-      "mtimeMs": 1511409088215.696,
-      "ctimeMs": 1524459078567.029,
-      "birthtimeMs": 1524459078567.029,
-      "atime": "2018-04-25T03:01:58.102Z",
-      "mtime": "2017-11-23T03:51:28.216Z",
-      "ctime": "2018-04-23T04:51:18.567Z",
-      "birthtime": "2018-04-23T04:51:18.567Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo4.png",
-      "filePath": "./images/logos/logo4.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo4",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 160,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5379289,
-      "size": 2858,
-      "blocks": 8,
-      "atimeMs": 1524625318102.1577,
-      "mtimeMs": 1511409087759.026,
-      "ctimeMs": 1524459078405.0273,
-      "birthtimeMs": 1524459078405.0273,
-      "atime": "2018-04-25T03:01:58.102Z",
-      "mtime": "2017-11-23T03:51:27.759Z",
-      "ctime": "2018-04-23T04:51:18.405Z",
-      "birthtime": "2018-04-23T04:51:18.405Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo5.png",
-      "filePath": "./images/logos/logo5.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo5",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 160,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5379288,
-      "size": 2590,
-      "blocks": 8,
-      "atimeMs": 1524625318102.1577,
-      "mtimeMs": 1511409087689.025,
-      "ctimeMs": 1524459078235.026,
-      "birthtimeMs": 1524459078235.026,
-      "atime": "2018-04-25T03:01:58.102Z",
-      "mtime": "2017-11-23T03:51:27.689Z",
-      "ctime": "2018-04-23T04:51:18.235Z",
-      "birthtime": "2018-04-23T04:51:18.235Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo6.png",
-      "filePath": "./images/logos/logo6.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo6",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 160,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5379287,
-      "size": 4606,
-      "blocks": 16,
-      "atimeMs": 1524625318105.491,
-      "mtimeMs": 1511409087229.022,
-      "ctimeMs": 1524459078076.0242,
-      "birthtimeMs": 1524459078076.0242,
-      "atime": "2018-04-25T03:01:58.105Z",
-      "mtime": "2017-11-23T03:51:27.229Z",
-      "ctime": "2018-04-23T04:51:18.076Z",
-      "birthtime": "2018-04-23T04:51:18.076Z",
-      "isFile": true,
-      "isDirectory": false,
-      "filename": "logo7.png",
-      "filePath": "./images/logos/logo7.png",
-      "depth": 12,
-      "parentDirs": "images/logos",
-      "parent": "logos",
-      "extension": "png",
-      "basename": "logo7",
-      "tags": [
-        "images",
-        "logos"
-      ],
-      "type": "image",
-      "width": 161,
-      "height": 160
-    },
-    {
-      "dev": 2053,
-      "mode": 33261,
-      "nlink": 1,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
       "ino": 5379257,
       "size": 2332,
       "blocks": 8,
@@ -2009,11 +1757,11 @@ export default {
       "ino": 4213799,
       "size": 69355,
       "blocks": 136,
-      "atimeMs": 1524543449250.6157,
+      "atimeMs": 1524667832144.3687,
       "mtimeMs": 1524543448962.6133,
       "ctimeMs": 1524543448962.6133,
       "birthtimeMs": 1524543448962.6133,
-      "atime": "2018-04-24T04:17:29.251Z",
+      "atime": "2018-04-25T14:50:32.144Z",
       "mtime": "2018-04-24T04:17:28.963Z",
       "ctime": "2018-04-24T04:17:28.963Z",
       "birthtime": "2018-04-24T04:17:28.963Z",
@@ -2073,48 +1821,6 @@ export default {
         "installation7.jpg",
         "installation8.jpg",
         "installation9.jpg"
-      ]
-    },
-    {
-      "dev": 2053,
-      "mode": 16877,
-      "nlink": 2,
-      "uid": 1000,
-      "gid": 1000,
-      "rdev": 0,
-      "blksize": 4096,
-      "ino": 5447699,
-      "size": 4096,
-      "blocks": 8,
-      "atimeMs": 1524545621992.7178,
-      "mtimeMs": 1524459079068.034,
-      "ctimeMs": 1524459158458.8003,
-      "birthtimeMs": 1524459158458.8003,
-      "atime": "2018-04-24T04:53:41.993Z",
-      "mtime": "2018-04-23T04:51:19.068Z",
-      "ctime": "2018-04-23T04:52:38.459Z",
-      "birthtime": "2018-04-23T04:52:38.459Z",
-      "isFile": false,
-      "isDirectory": true,
-      "filename": "logos",
-      "filePath": "./images/logos",
-      "depth": 6,
-      "parentDirs": "images",
-      "parent": "images",
-      "extension": "",
-      "basename": "logos",
-      "tags": [
-        "images"
-      ],
-      "type": "directory",
-      "files": [
-        "logo1.png",
-        "logo2.png",
-        "logo3.png",
-        "logo4.png",
-        "logo5.png",
-        "logo6.png",
-        "logo7.png"
       ]
     },
     {
@@ -2207,11 +1913,11 @@ export default {
       "ino": 5447703,
       "size": 4096,
       "blocks": 8,
-      "atimeMs": 1524545621992.7178,
+      "atimeMs": 1524632083603.8198,
       "mtimeMs": 1524459096881.206,
       "ctimeMs": 1524459158465.8003,
       "birthtimeMs": 1524459158465.8003,
-      "atime": "2018-04-24T04:53:41.993Z",
+      "atime": "2018-04-25T04:54:43.604Z",
       "mtime": "2018-04-23T04:51:36.881Z",
       "ctime": "2018-04-23T04:52:38.466Z",
       "birthtime": "2018-04-23T04:52:38.466Z",
@@ -2245,11 +1951,11 @@ export default {
       "ino": 5447705,
       "size": 4096,
       "blocks": 8,
-      "atimeMs": 1524545621992.7178,
+      "atimeMs": 1524632083603.8198,
       "mtimeMs": 1524459024195.5032,
       "ctimeMs": 1524459158469.8003,
       "birthtimeMs": 1524459158469.8003,
-      "atime": "2018-04-24T04:53:41.993Z",
+      "atime": "2018-04-25T04:54:43.604Z",
       "mtime": "2018-04-23T04:50:24.196Z",
       "ctime": "2018-04-23T04:52:38.470Z",
       "birthtime": "2018-04-23T04:52:38.470Z",
@@ -2362,15 +2068,7 @@ export default {
       51,
       52,
       53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62
+      54
     ],
     "bouquets": [
       0,
@@ -2398,46 +2096,37 @@ export default {
       20,
       21
     ],
-    "logos": [
+    "installation": [
       22,
       23,
       24,
       25,
       26,
       27,
-      28
-    ],
-    "installation": [
+      28,
       29,
-      30,
+      30
+    ],
+    "portraits": [
       31,
       32,
       33,
       34,
       35,
       36,
-      37
-    ],
-    "portraits": [
+      37,
       38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46
+      39
     ],
     "still-nature": [
-      47,
-      48,
-      49
+      40,
+      41,
+      42
     ],
     "zena": [
-      50,
-      51,
-      52
+      43,
+      44,
+      45
     ]
   },
   "types": {
@@ -2468,13 +2157,13 @@ export default {
       23,
       24,
       25,
-      26,
       27,
       28,
       29,
       30,
       31,
       32,
+      33,
       34,
       35,
       36,
@@ -2487,32 +2176,24 @@ export default {
       43,
       44,
       45,
-      46,
-      47,
-      48,
-      49,
-      50,
-      51,
-      52,
-      59
+      51
     ],
     "unknown-JPG": [
-      33
+      26
     ],
     "directory": [
-      53,
-      54,
-      56,
-      57,
-      58,
-      60,
-      61
+      46,
+      47,
+      49,
+      50,
+      52,
+      53
     ],
     "application": [
-      55
+      48
     ],
     "vectorial": [
-      62
+      54
     ]
   },
   "directories": {
@@ -2542,58 +2223,48 @@ export default {
       20,
       21
     ],
-    "images/logos": [
+    "images/installation": [
       22,
       23,
       24,
       25,
       26,
       27,
-      28
-    ],
-    "images/installation": [
+      28,
       29,
-      30,
+      30
+    ],
+    "images/portraits": [
       31,
       32,
       33,
       34,
       35,
       36,
-      37
-    ],
-    "images/portraits": [
+      37,
       38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46
+      39
     ],
     "images/still-nature": [
-      47,
-      48,
-      49
+      40,
+      41,
+      42
     ],
     "images/zena": [
-      50,
-      51,
-      52
+      43,
+      44,
+      45
     ],
     "images": [
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
       53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62
+      54
     ]
   },
   "filenames": {
@@ -2663,154 +2334,120 @@ export default {
     "city4.jpg": [
       21
     ],
-    "logo1.png": [
+    "installation1.jpg": [
       22
     ],
-    "logo2.png": [
+    "installation2.jpg": [
       23
     ],
-    "logo3.png": [
+    "installation3.jpg": [
       24
     ],
-    "logo4.png": [
+    "installation4.jpg": [
       25
     ],
-    "logo5.png": [
+    "installation5.JPG": [
       26
     ],
-    "logo6.png": [
+    "installation6.jpg": [
       27
     ],
-    "logo7.png": [
+    "installation7.jpg": [
       28
     ],
-    "installation1.jpg": [
+    "installation8.jpg": [
       29
     ],
-    "installation2.jpg": [
+    "installation9.jpg": [
       30
     ],
-    "installation3.jpg": [
+    "portrait1.jpg": [
       31
     ],
-    "installation4.jpg": [
+    "portrait2.jpg": [
       32
     ],
-    "installation5.JPG": [
+    "portrait3.jpg": [
       33
     ],
-    "installation6.jpg": [
+    "portrait4.jpg": [
       34
     ],
-    "installation7.jpg": [
+    "portrait5.jpg": [
       35
     ],
-    "installation8.jpg": [
+    "portrait6.jpg": [
       36
     ],
-    "installation9.jpg": [
+    "portrait7.jpg": [
       37
     ],
-    "portrait1.jpg": [
+    "portrait8.jpg": [
       38
     ],
-    "portrait2.jpg": [
+    "portrait9.jpg": [
       39
     ],
-    "portrait3.jpg": [
+    "stillnature1.jpg": [
       40
     ],
-    "portrait4.jpg": [
+    "stillnature2.jpg": [
       41
     ],
-    "portrait5.jpg": [
+    "stillnature3.jpg": [
       42
     ],
-    "portrait6.jpg": [
+    "portrait-by-camille-zakharia.jpg": [
       43
     ],
-    "portrait7.jpg": [
+    "portrait-by-gilbert-hage.resized.jpg": [
       44
     ],
-    "portrait8.jpg": [
-      45
-    ],
-    "portrait9.jpg": [
-      46
-    ],
-    "stillnature1.jpg": [
-      47
-    ],
-    "stillnature2.jpg": [
-      48
-    ],
-    "stillnature3.jpg": [
-      49
-    ],
-    "portrait-by-camille-zakharia.jpg": [
-      50
-    ],
-    "portrait-by-gilbert-hage.resized.jpg": [
+    "signature.jpg": [
+      45,
       51
     ],
-    "signature.jpg": [
-      52,
-      59
-    ],
     "bouquets": [
-      53
+      46
     ],
     "cities": [
-      54
+      47
     ],
     "images.json": [
-      55
+      48
     ],
     "installation": [
-      56
-    ],
-    "logos": [
-      57
+      49
     ],
     "portraits": [
-      58
+      50
     ],
     "still-nature": [
-      60
+      52
     ],
     "zena": [
-      61
+      53
     ],
     "zena.svg": [
-      62
+      54
     ]
   },
   "depths": {
     "6": [
-      53,
-      54,
-      55,
-      56,
-      57,
-      58,
-      59,
-      60,
-      61,
-      62
-    ],
-    "11": [
+      46,
+      47,
+      48,
+      49,
       50,
       51,
-      52
+      52,
+      53,
+      54
     ],
-    "12": [
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28
+    "11": [
+      43,
+      44,
+      45
     ],
     "13": [
       18,
@@ -2839,19 +2476,6 @@ export default {
       17
     ],
     "16": [
-      38,
-      39,
-      40,
-      41,
-      42,
-      43,
-      44,
-      45,
-      46
-    ],
-    "19": [
-      29,
-      30,
       31,
       32,
       33,
@@ -2859,20 +2483,32 @@ export default {
       35,
       36,
       37,
-      47,
-      48,
-      49
+      38,
+      39
+    ],
+    "19": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      40,
+      41,
+      42
     ]
   },
   "inode": {
     "directory": [
-      53,
-      54,
-      56,
-      57,
-      58,
-      60,
-      61
+      46,
+      47,
+      49,
+      50,
+      52,
+      53
     ],
     "file": [
       0,
@@ -2921,16 +2557,9 @@ export default {
       43,
       44,
       45,
-      46,
-      47,
       48,
-      49,
-      50,
       51,
-      52,
-      55,
-      59,
-      62
+      54
     ]
   }
 }
