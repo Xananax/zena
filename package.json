@@ -16,7 +16,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "assets:clean":"rm ./src/assets/articles.js && rm ./src/assets/images.js",
+    "assets:articles":"cd ./src/assets/ && node read-directory.js ./articles ./articles.js",
+    "assets:images":"cd ./src/assets/ && node read-directory.js ./images ./images.js",
+    "assets":"npm run assets:articles && npm run assets:images"
   },
   "browserslist": {
     "development": [

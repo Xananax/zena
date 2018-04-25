@@ -1,0 +1,7 @@
+.press p{
+  columns: 2 12em;
+}
+
+.press p a{
+  display: block;
+}
