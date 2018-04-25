@@ -1,0 +1,33 @@
+.exhibition{
+  display: flex;
+  max-width:38em;
+  margin:0 auto;
+  justify-content: space-between;
+  position: relative;
+}
+
+.info{
+  width:50%;
+}
+
+.galleryName{
+
+}
+
+.galleryDate{
+  color:#7a7a7a;
+}
+
+.galleryLocation p{
+  font-size:.8em;
+  margin-bottom:.3em;
+}
+
+.image{
+  width:50%;
+  height:100%;
+  position: absolute;
+  right:0;
+  top:0;
+  bottom: 0;
+}

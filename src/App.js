@@ -8,7 +8,8 @@ import { Exhibitions } from './pages/Exhibitions'
 //import styles from './App.module.css';
 import logo from './assets/images/zena.svg'
 import assets from './assets'
-const tags = Object.keys(assets.tags)
+
+const tags = Object.keys(assets.tags).filter(tag=>tag!=='zena')
 
 class App extends Component {
   componentDidMount(){
@@ -17,13 +18,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Nav image={logo} title="Zena Assi">
+          <h3>Work</h3>
+          { tags.map(tag=><NavLink key={tag} to={tag}>{tag}</NavLink>)}
+          <hr/>
+          <NavLink to="/press">Press</NavLink>
+          <NavLink to="/zena">Zena</NavLink>
+        </Nav>
         <Exhibitions/>
         <Press/>
         <About/>
         <Gallery/>
-        <Nav image={logo} title="Zena Assi">
-          { tags.map(tag=><NavLink key={tag} to={tag}>{tag}</NavLink>)}
-        </Nav>
       </div>
     );
   }

@@ -1,15 +1,16 @@
 import React from 'react'
 import { Content } from '../wrappers/Content'
-//import assets from '../assets'
+import { Image } from '../utils/Image'
+import { exhibition, image, info, galleryName, galleryDate, galleryLocation } from './Exhibitions.module.css'
+import assets from '../assets'
 
 export const Exhibitions = () => (
   <Content className="">
-    <article className="">
-      <div className="">
-        <h3 className="">J.Cacciola Gallery</h3>
-        <h2 className="">2018 Summer</h2>
-        <p className="">february 24 - april 10</p>
-        <div className="">
+    <article className={exhibition}>
+      <div className={info}>
+        <h2 className={galleryName}>J.Cacciola Gallery</h2>
+        <p className={galleryDate}>february 24 - april 10</p>
+        <div className={galleryLocation}>
           <p>35 Mill Street</p>
           <p>Bernardsville, NJ 07924</p>
           <p>908-204-1972</p>
@@ -18,9 +19,7 @@ export const Exhibitions = () => (
           <p>Saturday 10 am - 5 pm     Sun/Mon closed</p>
         </div>
       </div>
-      <div className="">
-
-      </div>
+      <Image cover className={image} loaded src={assets.items[7].src}/>
     </article>
   </Content>
 )
