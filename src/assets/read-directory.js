@@ -64,7 +64,7 @@ const getType = (ext) => {
   if(/jpe?g|png|gif|bmp|tiff?/.test(ext)){ return 'image' }
   if(/jsx?|tsx?|json/.test(ext)){ return 'application'}
   if(/html?|txt|md/.test(ext)){return 'text'}
-  if(/pdf|docx?|xlsx?/.test(ext)){return 'document'}
+  if(/pdf|docx?|xlsx|xps?/.test(ext)){return 'document'}
   if(/xps|svg|ai/.test(ext)){return 'vectorial'}
   else{ return 'unknown-'+ext}
 }
@@ -105,7 +105,7 @@ const writeFile = (path) => (data) => new Promise((ok,no)=>{
 
 const toString = (data) => new Promise((ok,no)=>{
   try{
-    const str = JSON.stringify(data,null,2)
+    const str = `export default `+JSON.stringify(data,null,2)
     return ok(str)
   }catch(e){ return no(e)}
 })
