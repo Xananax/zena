@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 import typography from './utils/typography'
 //import { TypographyStyle, GoogleFont } from 'react-typography'
