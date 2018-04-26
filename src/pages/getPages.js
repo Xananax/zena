@@ -1,5 +1,6 @@
 import React from 'react'
 import { About as AboutPage } from './About'
+import { Contact as ContactPage } from './Contact'
 import { Gallery as GalleryPage } from './Gallery'
 import { Home as HomePage } from './Home'
 import { Press as PressPage } from './Press'
@@ -17,6 +18,7 @@ export const getPages = (context) => {
     Exhibitions: withContext(ExhibitionsPage),
     Home: withContext(HomePage),
     NotFound: withContext(NotFoundPage),
+    Contact: withContext(ContactPage)
   }
 }
 

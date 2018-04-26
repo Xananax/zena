@@ -82,6 +82,24 @@
   padding:.5em;
 }
 
+.menuItem a, .menuItem a:hover{
+  text-decoration:none;
+}
+
+.menuItem a::before{
+  content:'';
+  display:inline-block;
+  background:#4d6071;
+  width:5px;
+  height:5px;
+  margin-right:3px;
+  margin-bottom:1px;
+}
+
+.menuItem a.active::before, .menuItem a:hover::before{
+  background:#733433;
+}
+
 .header{
   display: inline-block
 }

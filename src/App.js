@@ -14,12 +14,13 @@ const images = files.images.items
 const assets = { galleries, documents, images, zena:files.images.directories.zena }
 
 
-const { Press, Exhibitions, About, Gallery, Home, NotFound } = getPages(assets)
+const { Press, Exhibitions, About, Gallery, Home, NotFound, Contact } = getPages(assets)
 
 const links = [
   { children:'Press',key:'press', to:'/press', component:Press },
   { children:'Exhibitions',key:'exh', to:'/exhibitions', component:Exhibitions },
-  { children:'Zena',key:'zena', to:'/zena', component:About }
+  { children:'Zena',key:'zena', to:'/zena', component:About },
+  { children:'Contact',key:'con', to:'/contact', component:Contact }
 ]
 const galleryLinks = Object.keys(galleries).filter(tag=>tag && tag!=='zena').map(tag=>({children:tag, key:tag,to:'/gallery/'+tag}))
 
