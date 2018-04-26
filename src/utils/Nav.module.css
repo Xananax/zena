@@ -146,13 +146,13 @@
     min-height: auto;
     width:100%;
     transform: translateX(0);
+    height:4.5em;
     box-shadow: 0 0 0.2em rgba(17,17,17,0.2);
   }
   .menuItems{
     display:flex;
     flex-direction: inherit;
     width:60em;
-    height:4.5em;
     justify-content: space-evenly;
   }
   .menuItem{
