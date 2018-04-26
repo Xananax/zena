@@ -3,7 +3,8 @@
   text-align: center;
   overflow:hidden;
   display: inline-block;
-  background:linear-gradient(#111,#222)
+  background:linear-gradient(#111,#222);
+  width:100%;
 }
 
 .image img{
