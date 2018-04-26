@@ -2,6 +2,7 @@ import React from 'react'
 import {Image} from './Image'
 import {ImageLoader} from './ImageLoader'
 import { checkIfInView } from './checkIfInView'
+import { galleryImage } from './GalleryImage.module.css'
 
 export class GalleryImage extends React.Component{
   state = { inView: false }
@@ -34,7 +35,7 @@ export class GalleryImage extends React.Component{
   }
   render(){
     const { inView:load } = this.state
-    const { alt, src, onSuccess, onError, onLoad, className, width, height, caption } = this.props
+    const { alt, src, onSuccess, onError, onLoad, className, width, height, caption, children, style } = this.props
     const { imageRef } = this
     const lazy = true
     
@@ -44,10 +45,10 @@ export class GalleryImage extends React.Component{
       <ImageLoader {...props}>
         { 
           (imageProps) => 
-            <>
+            <div className={galleryImage} style={style}>
               <Image {...this.mixImageProps(imageProps,width,height) }/>
-              <p>{ caption }</p>
-            </>
+              <div>{ caption }{ children }</div>
+            </div>
         }
       </ImageLoader>
     )

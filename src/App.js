@@ -1,32 +1,29 @@
 import React, { Component } from 'react';
 import Nav from './utils/Nav'
 import { NavLink, Switch, Route } from 'react-router-dom'
-import { About as AboutPage } from './pages/About'
-import { Gallery as GalleryPage } from './pages/Gallery'
-import { Press as PressPage } from './pages/Press'
-import { Exhibitions as ExhibitionsPage } from './pages/Exhibitions'
+import { getPages } from './pages'
 import { ScrollToTop } from './utils/ScrollToTop'
 //import styles from './App.module.css';
 import logo from './assets/images/zena.svg'
-import assets from './assets'
+import * as files from './assets'
 
-const tags = Object.keys(assets.tags).filter(tag=>tag!=='zena')
+const galleries = files.images.tags
+const documents = files.articles.types.document
+const images = files.images.items
 
-const withContext = (Comp) => ({match}) => <Comp url={match.url} params={match.params} assets={assets}/>
+const assets = { galleries, documents, images, zena:files.images.directories.zena }
 
-const About = withContext(AboutPage)
-const Gallery = withContext(GalleryPage)
-const Press = withContext(PressPage)
-const Exhibitions = withContext(ExhibitionsPage)
+
+const { Press, Exhibitions, About, Gallery, Home, NotFound } = getPages(assets)
 
 const links = [
   { children:'Press',key:'press', to:'/press', component:Press },
   { children:'Exhibitions',key:'exh', to:'/exhibitions', component:Exhibitions },
   { children:'Zena',key:'zena', to:'/zena', component:About }
 ]
-const galleryLinks = tags.map(tag=>({children:tag, key:tag,to:'/gallery/'+tag}))
+const galleryLinks = Object.keys(galleries).filter(tag=>tag && tag!=='zena').map(tag=>({children:tag, key:tag,to:'/gallery/'+tag}))
 
-const pages = [ {children:'gallery', key:'gallery', to:'/gallery/:category', component:Gallery}, ...links]
+const pages = [ {children:'Home', exact:true, key:'home', to:'/', component:Home}, {children:'gallery', key:'gallery', to:'/gallery/:category', component:Gallery}, ...links]
 
 class App extends Component {
   componentonentDidMount(){
@@ -43,8 +40,8 @@ class App extends Component {
             { links.map(({component,...props})=><NavLink {...props}/>) }
           </Nav>
           <Switch>
-            { pages.map(({component,to:path,key})=><Route path={path} key={key} component={component}/>)}
-            <Route render={()=><div>hello</div>}/>
+            { pages.map(({component,to:path,key,exact})=><Route path={path} key={key} exact={exact} component={component}/>)}
+            <Route component={NotFound}/>
           </Switch>
         </div>
       </ScrollToTop>

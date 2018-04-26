@@ -1,17 +1,15 @@
 import React from 'react'
 import { Gallery as Gal } from '../utils/Gallery'
 import { Content } from '../wrappers/Content'
-import assets from '../assets'
+import { NotFound } from './NotFound'
 
-const images = assets.tags
-
-export const Gallery = ({params:{category}}) => { 
-  const list = images[category]
+export const Gallery = ({params:{category}, url, galleries}) => { 
+  const list = galleries[category]
   if(!list){
     return (
-        <Content title="Gallery not found">
+      <NotFound title="Gallery not found" url={url}>
           <h4>This gallery does not exist</h4>
-        </Content>
+      </NotFound>
       )
   }
   return (

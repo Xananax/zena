@@ -1,4 +1,5 @@
 import React, { Children } from 'react'
+import { NavLink } from 'react-router-dom'
 import { nav, overlay, image, menu, header, open, menuItem, menuItems } from './Nav.module.css'
 import { onEscape } from './onKeyDown'
 
@@ -9,7 +10,7 @@ export const Nav = ({ isOpen, children, toggle, title, image:src }) => (
       <div className={menuItems}>
         { (title || src) && (
           <div className={header}>
-            <img className={image}  src={src} alt={title}/>
+            <NavLink to="/"><img className={image}  src={src} alt={title}/></NavLink>
           </div>
         )}
         { Children.map(children, (child,index) => <div className={menuItem} key={child.key || index }>{child}</div>)}

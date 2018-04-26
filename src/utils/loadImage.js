@@ -6,7 +6,8 @@ export const loadFreshImage = (src) => new Promise((ok, no) => {
   const resolve = () => {
     image.onerror = null
     image.onload = null
-    setTimeout(() => ok(image), 1000)
+    ok(image)
+    // setTimeout(() => ok(image), 100000)
   }
   image.onload = resolve
   image.onerror = no
