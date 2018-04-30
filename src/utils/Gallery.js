@@ -34,7 +34,6 @@ export class Gallery extends React.Component{
     const { src, width, height } = typeof image === 'string' ? {src:image} : image
     const { onSuccess, onError, onLoad } = this
     const props = { onSuccess, onError, onLoad, src, width, height, className:galleryImage }
-    console.log(width,height)
     return <div key={src} className={galleryItem}><GalleryImage alt="" {...props}/></div>
   }
   render(){
