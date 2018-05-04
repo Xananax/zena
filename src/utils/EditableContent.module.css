@@ -1,0 +1,18 @@
+.editableContent{
+  display: inline-block;
+}
+
+.editMode .editableContent > *{
+  width:100%;
+  background: bisque;
+  padding:1em;
+  box-sizing: border-box;
+}
+
+.editMode .editableContent > :first-child{
+}
+
+
+.buttons{
+  flex-grow: 1
+}

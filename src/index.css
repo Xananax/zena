@@ -25,7 +25,7 @@ button, .button, [type=submit], .dropimage {
   box-shadow: 0 0 transparent inset;
 }
 
-.label, [data-tooltip]:after, button, .button, [type=submit], .dropimage {
+.label, [data-tooltip]:after, button, .button, [type=submit], [type=reset], .dropimage {
   display: inline-block;
   text-align: center;
   margin: 0;
@@ -42,6 +42,18 @@ button, .button, [type=submit], .dropimage {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+input, textarea, .select select {
+  line-height: 1.5;
+  margin: 0;
+  height: 2.1em;
+  padding: .3em .6em;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: .2em;
+  transition: all 0.3s;
+  width: 100%;
 }
 
 a, a:visited, a:active{

@@ -1,7 +1,8 @@
 const toArray = (thing) =>Array.prototype.slice.call(thing)
 
 export const serializeForm = (form) => {
-  const { elements, action, method } = form;
+  const { elements, name, action:_action, method } = form;
+  const action = _action.replace(window.location,'')
   const inputs = toArray(elements)
   const serialized = {}
   inputs.forEach( input =>{
@@ -10,7 +11,7 @@ export const serializeForm = (form) => {
     if(type === 'checkbox'){
       serialized[name] = checked; return;
     }
-    if(type == 'radio' && checked){
+    if(type === 'radio' && checked){
       serialized[name] = value; return;
     }
     if(type === 'number'){
@@ -31,7 +32,7 @@ export const serializeForm = (form) => {
     }
     serialized[name] = value
   })
-  return serialized
+  return { name, action, method, fields:serialized }
 }
 
 export const processSubmit = (cb) => (evt) => {
