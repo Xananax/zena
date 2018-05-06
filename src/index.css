@@ -25,7 +25,7 @@ button, .button, [type=submit], .dropimage {
   box-shadow: 0 0 transparent inset;
 }
 
-.label, [data-tooltip]:after, button, .button, [type=submit], [type=reset], .dropimage {
+.label, [data-tooltip]:after, button, .button, [type=submit], [type=reset], [data-button] {
   display: inline-block;
   text-align: center;
   margin: 0;

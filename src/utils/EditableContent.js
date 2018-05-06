@@ -1,6 +1,6 @@
 import React from 'react'
 import { processSubmit } from './serializeForm'
-import { editableContent, buttons, editMode as editModeClass } from './EditableContent.module.css'
+import { container, editableContent, buttons, editMode as editModeClass } from './EditableContent.module.css'
 
 export class EditableContent extends React.Component{
   state = { editMode: false }
@@ -16,9 +16,9 @@ export class EditableContent extends React.Component{
     const { onSubmit:_remove, onDelete, form:Form, component:Comp, ...props } = this.props
     const { editMode } = this.state
     const { onSubmit, onCancel, toggle } = this
-    const buttonText = editMode ? 'cancel editing' : 'edit'
+    const buttonText = editMode ? '⎌' : '✎'
     return (
-      <div className={editMode && editModeClass}>
+      <div className={container +(editMode ? ' '+editModeClass:'')}>
         <div className={editableContent}>
           { editMode && 
             <form onSubmit={onSubmit} onAbort={onCancel}>
@@ -29,12 +29,10 @@ export class EditableContent extends React.Component{
           }
           <Comp {...props}/>
         </div>
-        { !editMode && 
-          <div className={buttons}>
-            <button onClick={toggle}>{buttonText}</button>
-            <button onClick={onDelete}>delete</button>
-          </div>
-        }
+        <div className={buttons}>
+          <button onClick={toggle}>{buttonText}</button>
+          <button onClick={onDelete}>✕</button>
+        </div>
       </div>
     )
   }

@@ -9,10 +9,18 @@
   box-sizing: border-box;
 }
 
+.container{
+  display: inline-block;
+  clear:both;
+  width:100%;
+  position: relative;
+}
+
 .editMode .editableContent > :first-child{
 }
 
-
 .buttons{
-  flex-grow: 1
+  position: absolute;
+  top:0;
+  right:0;
 }
