@@ -1,8 +1,10 @@
 const toArray = (thing) =>Array.prototype.slice.call(thing)
 
 export const serializeForm = (form) => {
+  const url = window.location.protocol+'//'+window.location.host
+  const regex = new RegExp('^'+url+'/?','ig')
   const { elements, name, action:_action, method } = form;
-  const action = _action.replace(window.location,'')
+  const action = _action.replace(regex,'')
   const inputs = toArray(elements)
   const serialized = {}
   inputs.forEach( input =>{
@@ -37,6 +39,7 @@ export const serializeForm = (form) => {
 
 export const processSubmit = (cb) => (evt) => {
   evt.preventDefault();
+  evt.stopPropagation();
   const form = evt.target;
   const serialized = serializeForm(form)
   cb(serialized)

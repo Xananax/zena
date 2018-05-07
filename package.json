@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://xananax.github.io/zena",
   "dependencies": {
+    "@firebase/app": "^0.2.0",
+    "@firebase/firestore": "^0.4.1",
     "classnames": "^2.2.5",
     "firebase": "^4.13.1",
     "gh-pages": "^1.1.0",

@@ -21,7 +21,7 @@ export class EditableContent extends React.Component{
     onEscape(this.onCancel)
   }
   render(){
-    const { onSubmit:_remove, onDelete, action, method, isCreateForm, form:Form, component:Comp, deleteOutside, deleteInside, ...props } = this.props
+    const { onSubmit:_remove, onDelete, action, name, method, isCreateForm, form:Form, component:Comp, deleteOutside, deleteInside, ...props } = this.props
     const { editMode } = this.state
     const { onSubmit, onCancel, toggle } = this
     const buttonText = editMode ? '⎌' : '✎'
@@ -30,8 +30,9 @@ export class EditableContent extends React.Component{
         <div className={editableContent}> 
           <div className={formClass}>
             <div className={formOverlay} onClick={onCancel}/>
-            <form onSubmit={onSubmit} onAbort={onCancel} action={action} method={method}>
+            <form onSubmit={onSubmit} onAbort={onCancel} name={name} action={action} method={method}>
               <Form {...props}/>
+              {/* { action && <input type="hidden" name="action" value={action}/> } */}
               <input type="submit" value="ok" className="ok"/>
               <input type="reset" value="cancel" onClick={onCancel}/>
               { !isCreateForm && deleteInside && <input type="reset" className="no" onClick={onDelete} value="delete"/> }
@@ -54,7 +55,7 @@ export class EditableContent extends React.Component{
 
 export const EditableCollection = ({elements, component, form, onDelete, onSubmit }) => (
   <>
-  { elements.map( item => <EditableContent action="update" {...{ component, form, onDelete, onSubmit,...item}}/>) }
+  { elements.map( item => <EditableContent {...{ action:'update', component, form, onDelete, onSubmit,...item}}/>) }
   <EditableContent action="create" isCreateForm={true} {...{ component, form, onDelete, onSubmit}}/>
   </>
 )
