@@ -37,6 +37,6 @@
 .fieldText{
 
 }
-.fieldTextArea{
-
+.fieldTextArea textarea{
+  height:5em;
 }

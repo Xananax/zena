@@ -3,7 +3,7 @@ import Nav from './utils/Nav'
 import { NavLink, Switch } from 'react-router-dom'
 import { ScrollToTop } from './utils/ScrollToTop'
 import { ContextRoute } from './utils/ContextRoute'
-import { Press, Exhibitions, About, Gallery, Home, NotFound, Contact } from './pages'
+import { Press, About, Gallery, Home, NotFound, Contact } from './pages'
 import { ExhibitionsAdmin } from './pages/adminPages'
 import data from './data'
 

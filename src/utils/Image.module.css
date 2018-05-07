@@ -11,6 +11,10 @@
   margin-bottom: 0;
 }
 
+.failed{
+  composes:image;
+}
+
 .inverted{
   composes:image;
   background:linear-gradient(#ddd,#eee)

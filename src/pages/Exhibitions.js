@@ -20,11 +20,11 @@ export const MainEvent = ({title, date, description, image:src }) => (
         </div> 
       }
     </div>
-    { image && <Image cover className={image} loaded src={src}/> }
+    { src && <Image cover className={image} loaded src={src}/> }
   </article>
 )
 
-export const Exhibitions = ({ galleries, events, mainEvent }) => (
+export const Exhibitions = ({ events, mainEvent }) => (
   <Content className="" title="Events & Exhibitions">
     { mainEvent && <MainEvent {...mainEvent}/>}
     { events.map(event=><Event {...event}/>) }

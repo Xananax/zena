@@ -2,18 +2,55 @@
   display: inline-block;
 }
 
-.editMode .editableContent > *{
-  width:100%;
-  background: bisque;
-  padding:1em;
-  box-sizing: border-box;
-}
-
 .container{
   display: inline-block;
   clear:both;
   width:100%;
   position: relative;
+}
+
+.container fieldset{
+  border:0;
+}
+
+.form, .form form{
+  position: fixed;
+  display: block;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: 999000;
+  transform: translateX(-100%);
+}
+
+.editMode .form, .editMode .form form{
+  transform: translateX(0);
+}
+
+.formOverlay{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color:rgba(0,0,0,.3);
+}
+
+.form form{
+  position: absolute;
+  top:4em;
+  bottom:4em;
+  left:4em;
+  right:4em;
+  padding:2em;
+  background: #fdfdfd;
+}
+
+.closeButton{
+  position: absolute;
+  top:-.5em;
+  right:-.5em;
 }
 
 .editMode .editableContent > :first-child{

@@ -3,7 +3,6 @@
   font-size:1.5em;
   top: 0;
   left: 0;
-  right: 0;
   bottom:0;
   overflow: hidden;
   z-index: 10000;
@@ -135,6 +134,7 @@
     left:0;
     right:0;
     width:100%;
+    bottom:auto;
   }
   .menu{
     left:0;

@@ -3,7 +3,7 @@ import { Content } from '../wrappers/Content'
 import { press, yearTitle } from './Press.module.css'
 
 export const DocumentLink = ({extension,title,src}) => {
-  return <a href={src} title={title}>{title}</a>
+  return <a href={src} title={title+'.'+extension}>{title}</a>
 }
 
 export const Year = ({year, documents}) => (

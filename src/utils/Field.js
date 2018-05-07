@@ -1,6 +1,6 @@
 import { createElement as el } from 'react'
 import { field, fieldSelect, fieldRadio, fieldText, fieldTextArea, fieldInput } from './Field.module.css'
-
+import classnames from 'classnames'
 
 export const Select = ({ id, label, items, ...props }) => (
   el('label',{id,className:field+' '+fieldSelect},
@@ -11,7 +11,7 @@ export const Select = ({ id, label, items, ...props }) => (
 )
 
 export const Radio = ({ id, name, items, ...props }) => (
-  el('span',{className:field+' '+fieldRadio},
+  el('span',{className:classnames(field,fieldRadio), ...props},
   items && items.length && items.map( item => {
      const { children, value, key } = normalizeItem(item)
      return el('label',{ key },el('input',{type:'radio', name, value },el('span',null,children)))
@@ -23,13 +23,13 @@ export const Input = ({ id, label, ...props }) =>
   el('label',{id,className:field+' '+fieldText},el('span',null,label),el('input',props))
 
 export const TextArea = ({ id, label, ...props }) => 
-  el('label',{id,className:field+' '+fieldTextArea},el('span',null,label),el('textarea',props))
+  el('label',{id,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props))
 
 export const Fieldset = ({ label, children, ...props }) => 
   el('fieldset',props,el('legend',null,label),children)
 
-export const FileInput  = ({ id, label, ...props }) => 
-  el('label',{id,className:field+' '+fieldText+' '+fieldInput,'data-button':true},el('span',null,label),el('input',props)) 
+export const FileInput  = ({ id, label, className, ...props }) => 
+  el('label',{id,className:classnames(field,fieldText,fieldInput,className),'data-button':true},el('span',null,label),el('input',props)) 
 
 export const normalizeItem = (item) => {
   if(typeof item === 'string'){

@@ -47,7 +47,7 @@ export class ImageLoader extends React.Component {
           }
         })
         .catch(error => {
-          this.setState((s) => ({ ...src, error, ...state_failure }))
+          this.setState((s) => ({ ...s, ...src, error, ...state_failure}))
           if (this.props.onError) {
             this.props.onError({src, error})
           }
