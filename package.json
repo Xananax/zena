@@ -5,6 +5,7 @@
   "homepage": "https://xananax.github.io/zena",
   "dependencies": {
     "classnames": "^2.2.5",
+    "firebase": "^4.13.1",
     "gh-pages": "^1.1.0",
     "image-size": "^0.6.2",
     "react": "^16.3.2",
