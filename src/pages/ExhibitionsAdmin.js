@@ -43,9 +43,15 @@ export class ExhibitionsAdmin extends React.Component{
         .then(({ id }) => this.setState({ events:[...this.state.events, { ...event, id }] }))
         .catch( error => this.setState({error:error.message}));
       }else if(props.id){
-        return db.collection('events').doc(props.id).set(event)
-        .then(() => this.setState({ events:this.state.events.map(evt=>evt.id===props.id?event:evt)}))
-        .catch( error => this.setState({error:error.message}))
+        if(action === 'update'){
+          return db.collection('events').doc(props.id).set(event)
+          .then(() => this.setState({ events:this.state.events.map(evt=>evt.id===props.id?event:evt)}))
+          .catch( error => this.setState({error:error.message}))
+        }else if(action === 'delete'){
+          return db.collection('events').doc(props.id).delete()
+          .then(() => this.setState({ events:this.state.events.filter(evt=>evt.id!==props.id)}))
+          .catch( error => this.setState({error:error.message}))
+        }
       }
     })
     
