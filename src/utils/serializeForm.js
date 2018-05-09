@@ -37,6 +37,31 @@ export const serializeForm = (form) => {
   return { name, action, method, fields:serialized }
 }
 
+export const validate = ( validators ) => ( values, stopAtFirst ) => {
+  let hasErrors = false
+  const newValues = {}
+  const errors = {}
+  for (const [key, validator] of Object.entries(validators)) {
+    const value = values[key]
+    try{
+      const newValue = validator(value)
+      if(typeof newValue !== 'undefined' && newValue !== value && !errors.length){
+        hasErrors = true
+        newValues[key] = newValue
+      }
+    }catch(e){
+      errors[key] = e
+      if(stopAtFirst){
+        return { errors, hasErrors }
+      }
+    }
+  }
+  if(hasErrors){
+    return { values:{...values,...newValues}, errors, hasErrors }
+  }
+  return { values, errors, hasErrors }
+}
+
 export const processSubmit = (cb) => (evt) => {
   evt.preventDefault();
   evt.stopPropagation();
