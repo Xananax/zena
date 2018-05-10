@@ -1,5 +1,5 @@
 import React from 'react'
-import { processSubmit } from './serializeForm'
+import { processSubmit } from './Form'
 import { container, editableContent, buttons, formOverlay, closeButton, form as formClass, editMode as editModeClass } from './EditableContent.module.css'
 import { onEscape } from './onKeyDown'
 

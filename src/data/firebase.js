@@ -1,5 +1,4 @@
-import firebase from '@firebase/app';
-import '@firebase/firestore'
+import * as firebase from 'firebase';
 
 import { readImageFromFile } from '../utils/readImageFromFile'
 const config = {
@@ -12,8 +11,8 @@ const config = {
 };
 
 firebase.initializeApp(config);
-export const storageRef = firebase.storage().ref();
 export const db = firebase.firestore();
+export const storageRef = firebase.storage().ref();
 
 export const upload = (path, file, meta) => (
   file
