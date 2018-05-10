@@ -40,3 +40,13 @@
 .fieldTextArea textarea{
   height:5em;
 }
+
+.error{
+  color:red;
+  display:none;
+}
+
+.hasError{
+  composes:error;
+  display:inline-block;
+}

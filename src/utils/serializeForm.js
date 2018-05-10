@@ -37,12 +37,12 @@ export const serializeForm = (form) => {
   return { name, action, method, fields:serialized }
 }
 
-export const validate = ( validators ) => ( values, stopAtFirst ) => {
+export const validate = ( validators, fields, stopAtFirst ) => {
   let hasErrors = false
   const newValues = {}
   const errors = {}
   for (const [key, validator] of Object.entries(validators)) {
-    const value = values[key]
+    const value = fields[key]
     try{
       const newValue = validator(value)
       if(typeof newValue !== 'undefined' && newValue !== value && !errors.length){
@@ -52,20 +52,28 @@ export const validate = ( validators ) => ( values, stopAtFirst ) => {
     }catch(e){
       errors[key] = e
       if(stopAtFirst){
-        return { errors, hasErrors }
+        return { fields, errors, hasErrors }
       }
     }
   }
   if(hasErrors){
-    return { values:{...values,...newValues}, errors, hasErrors }
+    return { fields:{...fields,...newValues}, errors, hasErrors }
   }
-  return { values, errors, hasErrors }
+  return { fields, errors, hasErrors }
 }
 
-export const processSubmit = (cb) => (evt) => {
+export const serializeAndValidate = ( validators, form, stopAtFirst ) => {
+  const { fields, ...rest } = serializeForm(form)
+  const validatedProps = validate(validators, fields, stopAtFirst)
+  const final = { ...rest, ...validatedProps }
+  return final;
+}
+
+export const processSubmit = (validators) => (cb) => (evt) => {
   evt.preventDefault();
-  evt.stopPropagation();
+  evt.stopPropagation(); 
   const form = evt.target;
-  const serialized = serializeForm(form)
+  const serialized = validators ? serializeAndValidate(validators, form) : serializeForm( form )
   cb(serialized)
 }
+

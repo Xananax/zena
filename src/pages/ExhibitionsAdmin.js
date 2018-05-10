@@ -5,26 +5,30 @@ import { Event, MainEvent } from './Exhibitions'
 import { EditableContent, EditableCollection } from '../utils/EditableContent'
 import { Field } from '../utils/Field'
 import { uploadImage, db } from '../data/firebase'
+import { Form } from '../utils/Form'
 
 export const EventForm = ({ id, title, date, description, image:src }) => (
-  <fieldset>
-    <Field type="hidden"   name="id" value={id}/>
-    <Field type="text"     name="title" value={title}/>
-    <Field type="text"     name="date" value={date}/>
-    <Field type="textarea" name="description" value={description}/>
-    <Field type="file" name="image" className="ok"/>
-    <br/>
-    { src 
-    ? <Image cover style={{width:100,height:100}} loaded src={src}/>
-    : <span>no image</span>
-    }
-  </fieldset>
+  <Form onSubmit={(things)=>console.log(things)}>
+    { ( errors ) => <>
+        <Field type="hidden"   name="id" value={id}/>
+        <Field type="text"     name="title" value={title}/>
+        <Field type="text"     name="date" value={date}/>
+        <Field type="textarea" name="description" value={description}/>
+        <Field type="file" name="image" className="ok"/>
+        <br/>
+        { src 
+        ? <Image cover style={{width:100,height:100}} loaded src={src}/>
+        : <span>no image</span>
+        }
+    </>}
+  </Form>
 )
 
 export const ExhibitionsAdminList = ({ events, mainEvent, onSubmit }) => (
   <Content className="" title="Events & Exhibitions">
-    { mainEvent && <EditableContent name="events" action="update" component={MainEvent} form={EventForm} onSubmit={onSubmit} {...mainEvent}/>}
-    <EditableCollection name="events" elements={events} component={Event} form={EventForm} onSubmit={onSubmit}/>
+    <EventForm {...events[0]}/>
+    {/* { mainEvent && <EditableContent name="events" action="update" component={MainEvent} form={EventForm} onSubmit={onSubmit} {...mainEvent}/>} */}
+    {/* <EditableCollection name="events" elements={events} component={Event} form={EventForm} onSubmit={onSubmit}/> */}
   </Content>
 )
 

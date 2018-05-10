@@ -1,36 +1,40 @@
 import { createElement as el, Component } from 'react'
 import { readImageFromFile } from './readImageFromFile'
-import { field, fieldSelect, fieldRadio, fieldText, fieldTextArea, fieldInput } from './Field.module.css'
+import { field, fieldSelect, fieldRadio, fieldText, fieldTextArea, fieldInput, error as errorClass, hasError } from './Field.module.css'
 import classnames from 'classnames'
 
-export const Select = ({ id, label, items, ...props }) => (
-  el('label',{id,className:field+' '+fieldSelect},
+export const ErrorLabel = ({ text, htmlFor }) => el('span',{ className:( text ? hasError : errorClass) },el('label',{htmlFor},text))
+
+export const Select = ({ htmlFor, error, labelId:id, label, items, ...props }) => (
+  el('label',{ id, htmlFor, className:classnames(field,fieldSelect)},
     el('span',null,label),
     items && items.length && 
-    el('select',props,...items.map(item=>el('option',normalizeItem(item))))
+    el('select',props,...items.map(item=>el('option',normalizeItem(item)))),
+    el(ErrorLabel,{ text:error, htmlFor })
   )
 )
 
-export const Radio = ({ id, name, items, ...props }) => (
-  el('span',{className:classnames(field,fieldRadio), ...props},
+export const Radio = ({ id, error, name, items, ...props }) => (
+  el('span',{ id, className:classnames(field,fieldRadio), ...props},
   items && items.length && items.map( item => {
      const { children, value, key } = normalizeItem(item)
      return el('label',{ key },el('input',{type:'radio', name, value },el('span',null,children)))
-    })
+    }),
+  el(ErrorLabel,{ text:error })
   )
 )
 
-export const Input = ({ id, label, ...props }) => 
-  el('label',{id,className:field+' '+fieldText},el('span',null,label),el('input',props))
+export const Input = ({ htmlFor, labelId:id, error, label, ...props }) => 
+  el('label',{ id, htmlFor, className:classnames(field,fieldText)},el('span',null,label),el('input',props), el(ErrorLabel,{ text:error, htmlFor }))
 
-export const TextArea = ({ id, label, ...props }) => 
-  el('label',{id,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props))
+export const TextArea = ({ htmlFor, error, labelId:id, label, ...props }) => 
+  el('label',{ id, htmlFor,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props), el(ErrorLabel,{ text:error, htmlFor }))
 
 export const Fieldset = ({ label, children, ...props }) => 
-  el('fieldset',props,el('legend',null,label),children)
+  el('fieldset', props, el('legend',null,label),children)
 
-export const FileInputButton  = ({ id, label, className, ...props }) => 
-  el('label',{id,className:classnames(field,fieldText,fieldInput,className),'data-button':true},el('span',null,label),el('input',props)) 
+export const FileInputButton  = ({ htmlFor, error, labelId:id, label, className, ...props }) => 
+  el('label',{ id, htmlFor,className:classnames(field,fieldText,fieldInput,className),'data-button':true},el('span',null,label),el('input',props),el(ErrorLabel,{ text:error, htmlFor })) 
 
 export class FileInput extends Component{
   state = { files:[], error:null }
@@ -86,14 +90,24 @@ export const normalizeItem = (item) => {
   }
 }
 
+let ids = 0
+
+const getIdForField  = ( props ) => {
+  if(props.id){ return props.id }
+  return 'field-'+( props.name || props.label.replace(/\s+/g,'-') || '' ) + (ids++)
+}
+
 export const normalizeFieldProps = ({value,defaultValue,...props}) => {
+  const id = getIdForField(props)
+  const htmlFor = id
+  const labelId = props.labelId || 'label-'+id
   const type = props.type || 'text'
-  const name = props.name || props.id
+  const name = props.name || id
   const label = props.label || name
   const placeholder = props.placeholder || label
   const valueKey = props.onChange ? 'value' : 'defaultValue'
   const valueProp = value || defaultValue
-  return { ...props, [valueKey]:valueProp,type, name, label, placeholder }
+  return { ...props, [valueKey]:valueProp, type, htmlFor, name, label, placeholder, id, labelId }
 }
 
 export const Field = (_props) => {
