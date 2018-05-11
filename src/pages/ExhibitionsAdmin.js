@@ -7,14 +7,23 @@ import { Field } from '../utils/Field'
 import { uploadImage, db } from '../data/firebase'
 import { Form } from '../utils/Form'
 
-export const EventForm = ({ id, title, date, description, image:src }) => (
-  <Form onSubmit={(things)=>console.log(things)}>
-    { ( errors ) => <>
-        <Field type="hidden"   name="id" value={id}/>
-        <Field type="text"     name="title" value={title}/>
-        <Field type="text"     name="date" value={date}/>
-        <Field type="textarea" name="description" value={description}/>
-        <Field type="file" name="image" className="ok"/>
+const validators = {
+  title(val){
+    if(!val){
+      throw new Error('title is mandatory')
+    }
+  }
+}
+
+export const EventForm = ({ id, name, action, title, date, description, image:src, onSubmit, onCancel }) => (
+  <Form onSubmit={onSubmit} validators={validators} onCancel={onCancel} name={name} action={action}>
+    { ( { errors } ) => <>
+        <h3>Edit Event</h3>
+        <Field type="hidden" name="id" value={id}/>
+        <Field type="text"     error={errors.title} name="title" value={title}/>
+        <Field type="text"     error={errors.date} name="date" value={date}/>
+        <Field type="textarea" error={errors.description} name="description" value={description}/>
+        <Field type="file" error={errors.file} name="image" className="ok"/>
         <br/>
         { src 
         ? <Image cover style={{width:100,height:100}} loaded src={src}/>
@@ -25,10 +34,9 @@ export const EventForm = ({ id, title, date, description, image:src }) => (
 )
 
 export const ExhibitionsAdminList = ({ events, mainEvent, onSubmit }) => (
-  <Content className="" title="Events & Exhibitions">
-    <EventForm {...events[0]}/>
-    {/* { mainEvent && <EditableContent name="events" action="update" component={MainEvent} form={EventForm} onSubmit={onSubmit} {...mainEvent}/>} */}
-    {/* <EditableCollection name="events" elements={events} component={Event} form={EventForm} onSubmit={onSubmit}/> */}
+  <Content title="Events & Exhibitions">
+    { mainEvent && <EditableContent name="events" action="update" component={MainEvent} form={EventForm} onSubmit={onSubmit} {...mainEvent}/>}
+    { <EditableCollection name="events" elements={events} component={Event} form={EventForm} onSubmit={onSubmit}/> }
   </Content>
 )
 
@@ -36,10 +44,8 @@ export class ExhibitionsAdmin extends React.Component{
   state = { events: [], error:null }
   onSubmit = (props) => {
     const { action, fields } = props;
-    if(!fields.title){
-      alert('oh noes! a title is necessary')
-      return
-    }
+    console.log(props);
+    return;
     uploadImage(fields.image).then( image => {
       const event = image ? {...fields,image:{width:image.width,height:image.height,url:image.url}} : fields
       if( action === 'create' ){

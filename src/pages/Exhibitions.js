@@ -25,7 +25,7 @@ export const MainEvent = ({title, date, description, image:src }) => (
 )
 
 export const Exhibitions = ({ events, mainEvent }) => (
-  <Content className="" title="Events & Exhibitions">
+  <Content title="Events & Exhibitions">
     { mainEvent && <MainEvent {...mainEvent}/>}
     { events.map(event=><Event {...event}/>) }
   </Content>

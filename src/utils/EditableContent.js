@@ -1,7 +1,7 @@
 import React from 'react'
-import { processSubmit } from './Form'
-import { container, editableContent, buttons, formOverlay, closeButton, form as formClass, editMode as editModeClass } from './EditableContent.module.css'
+import { container,  buttons } from './EditableContent.module.css'
 import { onEscape } from './onKeyDown'
+import { Modal } from './Modal'
 
 export class EditableContent extends React.Component{
   static defaultProps = {
@@ -11,43 +11,30 @@ export class EditableContent extends React.Component{
   state = { editMode: false }
   toggle = () => this.setState({editMode:!this.state.editMode})
   onCancel = () => this.setState({editMode:false})
-  onSubmit = processSubmit((data) => {
+  onSubmit = (data) => {
     this.setState({editMode:false});
     if(this.props.onSubmit){
       this.props.onSubmit(data)
     }
-  })
+  }
   componentDidMount(){
     onEscape(this.onCancel)
   }
   render(){
-    const { onSubmit:_remove, onDelete, action, name, method, isCreateForm, form:Form, component:Comp, deleteOutside, deleteInside, ...props } = this.props
+    const { onSubmit:_remove, onDelete, form:Form, component:Comp, deleteOutside, deleteInside, ...props } = this.props
     const { editMode } = this.state
     const { onSubmit, onCancel, toggle } = this
     const buttonText = editMode ? '⎌' : '✎'
     return (
-      <div className={container +(editMode ? ' '+editModeClass:'')}>
-        <div className={editableContent}> 
-          <div className={formClass}>
-            <div className={formOverlay} onClick={onCancel}/>
-            <form onSubmit={onSubmit} onAbort={onCancel} name={name} action={action} method={method}>
-              <Form {...props}/>
-              {/* { action && <input type="hidden" name="action" value={action}/> } */}
-              <input type="submit" value="ok" className="ok"/>
-              <input type="reset" value="cancel" onClick={onCancel}/>
-              { !isCreateForm && deleteInside && <input type="reset" className="no" onClick={onDelete} value="delete"/> }
-              <input type="reset" className={closeButton} onClick={onCancel} value="✕"/>
-            </form>
-          </div>
-          { Comp && <Comp {...props}/> }
+      <div className={container}>
+        <Modal show={editMode} closeButton={true} onClose={onCancel}>
+          <Form {...props} onSubmit={ onSubmit } onCancel={ onCancel }/>
+        </Modal>
+        <Comp {...props}/>
+        <div className={buttons}>
+          <button className="ok" onClick={toggle}>{buttonText}</button>
+          { deleteOutside && <button className="no" onClick={onDelete}>✕</button> }
         </div>
-        { isCreateForm 
-        ? <button onClick={toggle} className="ok big">+</button>
-        : <div className={buttons}>
-            <button className="ok" onClick={toggle}>{buttonText}</button>
-            { deleteOutside && <button className="no" onClick={onDelete}>✕</button> }
-          </div>
-        }
       </div>
     )
   }

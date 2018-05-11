@@ -1,4 +1,4 @@
-import { React, Component, createElement as el } from 'react'
+import { Component, createElement as el } from 'react'
 
 const toArray = (thing) =>Array.prototype.slice.call(thing)
 
@@ -48,10 +48,10 @@ export const validate = ( validators, fields, stopAtFirst ) => {
     try{
       const newValue = validator(value)
       if(typeof newValue !== 'undefined' && newValue !== value && !errors.length){
-        hasErrors = true
         newValues[key] = newValue
       }
     }catch(e){
+      hasErrors = true
       errors[key] = e
       if(stopAtFirst){
         return { fields, errors, hasErrors }
@@ -82,7 +82,7 @@ export const processSubmit = (validators) => (cb) => (evt) => {
 
 export class Form extends Component{
 
-  form = React.createRef()
+  form = null
 
   static defaultProps = {
     okLabel:'Ok',
@@ -94,12 +94,13 @@ export class Form extends Component{
     hasErrors:false
   }
 
+  ref = (el) => this.form = el 
+
   process = (form) => {
     const { validators } = this.props
     const serialized = validators ? serializeAndValidate(validators, form) : serializeForm( form )
     if(serialized.hasErrors){
       this.setState({ errors:{...serialized.errors}, hasErrors:true });
-      return serialized
     }else if(this.hasErrors){
       this.setState({ errors:{}, hasErrors:false });
     }
@@ -130,7 +131,7 @@ export class Form extends Component{
   onSubmit = (evt) => {
     evt.preventDefault();
     evt.stopPropagation(); 
-    const serialized = process(this.form)
+    const serialized = this.process(this.form)
     if(!serialized.hasErrors && this.props.onSubmit){
       this.props.onSubmit(serialized)
     }
@@ -140,13 +141,12 @@ export class Form extends Component{
     
     const { name, action, method, children:renderFunction, className, okLabel, cancelLabel, onCancel } = this.props
     const { errors } = this.state
-    const { onSubmit, onChange, form:ref } = this
+    const { onSubmit, onChange, ref } = this
 
     const okButton = el('input',{type:'submit', value:okLabel, className:'ok', onClick:onSubmit })
     const cancelButton = onCancel && el('input',{type:'reset',value:cancelLabel, onClick:onCancel })
-
-    const buttons = el('frameset',null,okButton,cancelButton)
-    const children = renderFunction( errors, onChange )
+    const buttons = el('nav',null,okButton,cancelButton)
+    const children = renderFunction( {errors, onChange} )
     const formProps = { className, ref, onSubmit, name, action, method }
     return el('form', formProps, children, buttons)
   }

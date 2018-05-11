@@ -3,14 +3,14 @@ import { readImageFromFile } from './readImageFromFile'
 import { field, fieldSelect, fieldRadio, fieldText, fieldTextArea, fieldInput, error as errorClass, hasError } from './Field.module.css'
 import classnames from 'classnames'
 
-export const ErrorLabel = ({ text, htmlFor }) => el('span',{ className:( text ? hasError : errorClass) },el('label',{htmlFor},text))
+export const ErrorLabel = ({ error, htmlFor }) => el('span',{ className:( error ? hasError : errorClass) },el('label',{htmlFor},error && error.message))
 
 export const Select = ({ htmlFor, error, labelId:id, label, items, ...props }) => (
   el('label',{ id, htmlFor, className:classnames(field,fieldSelect)},
     el('span',null,label),
     items && items.length && 
     el('select',props,...items.map(item=>el('option',normalizeItem(item)))),
-    el(ErrorLabel,{ text:error, htmlFor })
+    el(ErrorLabel,{ error, htmlFor })
   )
 )
 
@@ -20,21 +20,21 @@ export const Radio = ({ id, error, name, items, ...props }) => (
      const { children, value, key } = normalizeItem(item)
      return el('label',{ key },el('input',{type:'radio', name, value },el('span',null,children)))
     }),
-  el(ErrorLabel,{ text:error })
+  el(ErrorLabel,{ error })
   )
 )
 
 export const Input = ({ htmlFor, labelId:id, error, label, ...props }) => 
-  el('label',{ id, htmlFor, className:classnames(field,fieldText)},el('span',null,label),el('input',props), el(ErrorLabel,{ text:error, htmlFor }))
+  el('label',{ id, htmlFor, className:classnames(field,fieldText)},el('span',null,label),el('input',props), el(ErrorLabel,{ error, htmlFor }))
 
 export const TextArea = ({ htmlFor, error, labelId:id, label, ...props }) => 
-  el('label',{ id, htmlFor,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props), el(ErrorLabel,{ text:error, htmlFor }))
+  el('label',{ id, htmlFor,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props), el(ErrorLabel,{ error, htmlFor }))
 
 export const Fieldset = ({ label, children, ...props }) => 
   el('fieldset', props, el('legend',null,label),children)
 
 export const FileInputButton  = ({ htmlFor, error, labelId:id, label, className, ...props }) => 
-  el('label',{ id, htmlFor,className:classnames(field,fieldText,fieldInput,className),'data-button':true},el('span',null,label),el('input',props),el(ErrorLabel,{ text:error, htmlFor })) 
+  el('label',{ id, htmlFor,className:classnames(field,fieldText,fieldInput,className),'data-button':true},el('span',null,label),el('input',props),el(ErrorLabel,{ error, htmlFor })) 
 
 export class FileInput extends Component{
   state = { files:[], error:null }
@@ -111,8 +111,11 @@ export const normalizeFieldProps = ({value,defaultValue,...props}) => {
 }
 
 export const Field = (_props) => {
+  const type = _props.type
+  if(type==='hidden'){
+    return el('input',_props)
+  }
   const props = normalizeFieldProps(_props)
-  const type = props.type
   if(type === 'select'){
     return el(Select, props)
   }
@@ -121,9 +124,6 @@ export const Field = (_props) => {
   }
   if(type === 'textarea'){
     return el(TextArea,props)
-  }
-  if(type==='hidden'){
-    return el('input',props)
   }
   if(type === 'file'){
     return el(FileInput,props)
