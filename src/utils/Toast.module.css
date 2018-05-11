@@ -1,0 +1,55 @@
+.toastsContainer{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top:1em;
+  right:1em;
+  bottom:0;
+  box-sizing: border-box;
+}
+
+.toast{
+  padding:1em;
+  /* position: relative; */
+  animation: drop 1s ease-out;
+  transition:all .4s ease-out;
+  width:22em;
+  box-sizing: border-box;
+  margin:.2em;
+  right:0;
+  top:0;
+}
+
+@keyframes drop{
+  0% { transform: translateY(-100em); }
+  100% { transform: translateY(0); }
+}
+
+.inside{
+  padding:1em;
+  background:#fdfdfd;
+  width:100%;
+  height:100%;
+  position: relative;
+  box-shadow: 3px 3px 4px rgba(0,0,0,.4);
+}
+
+.ok{
+  background:green;
+}
+
+.no{
+  background:red;
+}
+
+.neutral{
+
+}
+
+.close{
+  position: absolute;
+  top:0;
+  right:0;
+  background:transparent;
+}

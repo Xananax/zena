@@ -1,13 +1,9 @@
 import React from 'react'
-import { container,  buttons } from './EditableContent.module.css'
+import { container,  buttons, editableContent } from './EditableContent.module.css'
 import { onEscape } from './onKeyDown'
 import { Modal } from './Modal'
 
-export class EditableContent extends React.Component{
-  static defaultProps = {
-    deleteInside:true,
-    deleteOutside:false
-  }
+export class TogglableContent extends React.Component{
   state = { editMode: false }
   toggle = () => this.setState({editMode:!this.state.editMode})
   onCancel = () => this.setState({editMode:false})
@@ -20,31 +16,49 @@ export class EditableContent extends React.Component{
   componentDidMount(){
     onEscape(this.onCancel)
   }
+}
+
+export class EditableContent extends TogglableContent{
+  static defaultProps = {
+    deleteInside:true,
+    deleteOutside:false
+  }
   render(){
-    const { onSubmit:_remove, onDelete, form:Form, component:Comp, deleteOutside, deleteInside, ...props } = this.props
+    const { onSubmit:_remove, onDelete, form:Form, component:Comp, ...props } = this.props
     const { editMode } = this.state
     const { onSubmit, onCancel, toggle } = this
     const buttonText = editMode ? '⎌' : '✎'
     return (
       <div className={container}>
         <Modal show={editMode} closeButton={true} onClose={onCancel}>
-          <Form {...props} onSubmit={ onSubmit } onCancel={ onCancel }/>
+          <Form {...props} action="update" onSubmit={ onSubmit } onCancel={ onCancel }/>
         </Modal>
-        <Comp {...props}/>
+        <div className={editableContent}>
+        < Comp {...props}/>
+        </div>
         <div className={buttons}>
           <button className="ok" onClick={toggle}>{buttonText}</button>
-          { deleteOutside && <button className="no" onClick={onDelete}>✕</button> }
         </div>
       </div>
     )
   }
 }
 
-export const EditableCollection = ({elements, component, form, onDelete, onSubmit }) => (
-  <>
-  { elements.map( item => <EditableContent {...{ action:'update', component, form, onDelete, onSubmit,...item}}/>) }
-  <EditableContent action="create" isCreateForm={true} {...{ component, form, onDelete, onSubmit}}/>
-  </>
-)
+export class NewContent extends TogglableContent{
+  render(){
+    const { onSubmit:_remove, onDelete, form:Form, ...props } = this.props
+    const { editMode } = this.state
+    const { onSubmit, onCancel, toggle } = this
+    const buttonText = editMode ? '⎌' : '+'
+    return (
+      <div className={container}>
+        <Modal show={editMode} closeButton={true} onClose={onCancel}>
+          <Form {...props} action="create" onSubmit={ onSubmit } onCancel={ onCancel }/>
+        </Modal>
+        <button onClick={toggle} className="ok big">{buttonText}</button>
+      </div>
+    )
+  }
+}
 
 export default EditableContent

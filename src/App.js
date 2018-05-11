@@ -5,6 +5,7 @@ import { ScrollToTop } from './utils/ScrollToTop'
 import { ContextRoute } from './utils/ContextRoute'
 import { Press, About, Gallery, Home, NotFound, Contact } from './pages'
 import { ExhibitionsAdmin } from './pages/adminPages'
+import { Toaster } from './utils/Toast'
 import data from './data'
 
 const links = [
@@ -33,6 +34,7 @@ class App extends Component {
             { pages.map(({component,to:path,key,exact})=><ContextRoute path={path} key={key} exact={exact} component={component} context={data}/>)}
             <ContextRoute component={NotFound} context={data}/>
           </Switch>
+          <Toaster/>
         </div>
       </ScrollToTop>
     );

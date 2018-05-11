@@ -14,6 +14,7 @@ const config = {
 
 firebase.initializeApp(config);
 export const db = firebase.firestore();
+db.settings({timestampsInSnapshots: true})
 export const storageRef = firebase.storage().ref();
 
 export const upload = (path, file, meta) => (
@@ -29,6 +30,6 @@ export const upload = (path, file, meta) => (
         .then( url => ({ ...metadata, image, url }) )
         .catch( err => { throw err })
     })
-  : Promise.resolve({})
+  : Promise.resolve(null)
 )
 export const uploadImage = (file, meta) => upload( 'images', file, meta )

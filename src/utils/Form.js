@@ -1,4 +1,5 @@
 import { Component, createElement as el } from 'react'
+import classnames from 'classnames'
 
 const toArray = (thing) =>Array.prototype.slice.call(thing)
 
@@ -13,8 +14,9 @@ export const serializeForm = (form) => {
     const { nodeName, name, type, value, checked } = input
     if(!name || nodeName === 'BUTTON'){ return; }
     if(type === 'checkbox'){
-      serialized[name] = checked; return;
+      serialized[name] = !!checked; return;
     }
+    if(typeof value === 'undefined' || value === ''){ return }
     if(type === 'radio' && checked){
       serialized[name] = value; return;
     }
@@ -29,6 +31,7 @@ export const serializeForm = (form) => {
     }
     if( type === 'file' ){
       const files = toArray(input.files)
+      if(!files.length){ return }
       if(input.multiple){
         serialized[name] = files; return
       }
@@ -91,7 +94,8 @@ export class Form extends Component{
 
   state = {
     errors:{},
-    hasErrors:false
+    hasErrors:false,
+    values:{}
   }
 
   ref = (el) => this.form = el 
@@ -139,14 +143,13 @@ export class Form extends Component{
 
   render(){
     
-    const { name, action, method, children:renderFunction, className, okLabel, cancelLabel, onCancel } = this.props
+    const { name, action, method, children:renderFunction, className, okClassName='ok', okLabel, cancelLabel, cancelClassName, onCancel } = this.props
     const { errors } = this.state
     const { onSubmit, onChange, ref } = this
-
-    const okButton = el('input',{type:'submit', value:okLabel, className:'ok', onClick:onSubmit })
-    const cancelButton = onCancel && el('input',{type:'reset',value:cancelLabel, onClick:onCancel })
+    const okButton = el('input',{type:'submit', value:okLabel, className:classnames(okClassName), onClick:onSubmit })
+    const cancelButton = onCancel && el('input',{type:'reset',value:cancelLabel, onClick:onCancel, className:classnames(cancelClassName) })
     const buttons = el('nav',null,okButton,cancelButton)
-    const children = renderFunction( {errors, onChange} )
+    const children = renderFunction && renderFunction( {errors, onChange} )
     const formProps = { className, ref, onSubmit, name, action, method }
     return el('form', formProps, children, buttons)
   }
