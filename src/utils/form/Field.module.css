@@ -46,6 +46,10 @@
   display:none;
 }
 
+.fieldInput .error{
+  width:100%;
+}
+
 .hasError{
   composes:error;
   display:inline-block;

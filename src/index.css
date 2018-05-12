@@ -66,6 +66,14 @@ button, .button, [type=submit], [type=reset], [data-button] {
 , [data-button].big
   { font-size: 2em;}
   
+           button.disabled,        button:disabled
+  ,       .button.disabled,       .button:disabled
+  , [type=submit].disabled, [type=submit]:disabled
+  ,  [type=reset].disabled,  [type=reset]:disabled
+  , [data-button].disabled, [data-button]:disabled
+  , :disabled
+  { background: rgb(179, 179, 179) }
+
 
 input, textarea, .select select {
   line-height: 1.5;

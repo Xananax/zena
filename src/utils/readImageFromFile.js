@@ -13,8 +13,8 @@ export const readImageFromFile = (file) => new Promise(( resolve, reject )=>{
   
   image.onload = () => {
       const { naturalHeight:height, naturalWidth:width } = image
-      window.URL.revokeObjectURL( image.src );
-      return resolve({ file, image, width, height, extension })
+      const free = () => window.URL.revokeObjectURL( image.src );
+      return resolve({ file, image, width, height, url:image.src, extension, free })
   };
 
   image.onerror = reject

@@ -31,6 +31,18 @@
     animation-duration: 2s;
 }
 
+
+.inverted{
+    composes:spinner;
+}
+
+.inverted::before, .inverted::after{
+    border-top-color:rgba(0, 0, 0, 0.3);
+    border-left-color:black;
+    border-bottom-color:rgba(0,0,0,.3);
+}
+
+
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }

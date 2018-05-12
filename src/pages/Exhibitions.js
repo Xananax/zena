@@ -1,32 +1,44 @@
 import React from 'react'
 import { Content } from '../wrappers/Content'
 import { Image } from '../utils/Image'
-import { exhibition, event, image, info, galleryName, galleryDate, galleryLocation } from './Exhibitions.module.css'
+import { validators, subscribe } from '../data/events'
+import { dispatch } from '../data/controller'
+import { Spinner } from '../utils/Spinner'
+import { Editable } from '../utils/form/Editable'
+import { ModalWithTrigger } from '../utils/Modal'
+import css from './Exhibitions.module.css'
 
-export const Event = ({title, date, description}) =>
-  <div className={event}>
-    <h3>{title}</h3>
-    { date && <h4>{date}</h4> }
-    { description && <p>{description}</p> }
-  </div>
+export const Event = ({ action, ...values}) =>
+  <Editable action={action} collection="events" dispatch={dispatch} className={css.event} values={values} validators={validators}>
+    <h2 className={css.title} name="title"/>
+    <h4 className={css.date} name="date"/>
+    <div className={css.description} name="description" inputType="textarea"/>
+    <Image cover className={css.image} loaded name="image" inputType="file"/>
+  </Editable>
 
-export const MainEvent = ({title, date, description, image:src }) => (
-  <article className={exhibition}>
-    <div className={info}>
-      <h2 className={galleryName}>{title}</h2>
-      { date && <p className={galleryDate}>{date}</p> }
-      { description && <div className={galleryLocation}>
-          { description }
-        </div> 
-      }
-    </div>
-    { src && <Image cover className={image} loaded src={src}/> }
-  </article>
-)
 
-export const Exhibitions = ({ events, mainEvent }) => (
-  <Content title="Events & Exhibitions">
-    { mainEvent && <MainEvent {...mainEvent}/>}
-    { events.map(event=><Event {...event}/>) }
-  </Content>
-)
+export class Exhibitions extends React.Component{
+
+  state = { events: [], loading:true }
+  
+  componentDidMount(){ this.unsubscribe = subscribe( events => this.setState({events,loading:false})) }
+
+  componentWillUnmount(){ this.unsubscribe && this.unsubscribe(); }
+
+  render(){
+    const { state:{ events, loading } } = this
+    return (
+      <Content title="Events & Exhibitions">
+        { loading
+        ? <Spinner inverted/>
+        : <>
+          { events.map(event=><Event action="update" key={event.id} {...event}/>)}
+          <ModalWithTrigger trigger={({toggle})=><button className="ok big" onClick={toggle}>+</button>}>
+            <Event action="create"/>
+          </ModalWithTrigger>
+          </>
+        }
+      </Content>
+    )
+  }
+}

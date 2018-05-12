@@ -3,14 +3,14 @@ import Nav from './utils/Nav'
 import { NavLink, Switch } from 'react-router-dom'
 import { ScrollToTop } from './utils/ScrollToTop'
 import { ContextRoute } from './utils/ContextRoute'
-import { Press, About, Gallery, Home, NotFound, Contact } from './pages'
-import { ExhibitionsAdmin } from './pages/adminPages'
+import { Press, Exhibitions, About, Gallery, Home, NotFound, Contact } from './pages'
+// import { ExhibitionsAdmin } from './pages/adminPages'
 import { Toaster } from './utils/Toast'
 import data from './data'
 
 const links = [
   { children:'Press',key:'press', to:'/press', component:Press },
-  { children:'Exhibitions',key:'exh', to:'/exhibitions', component:ExhibitionsAdmin },
+  { children:'Exhibitions',key:'exh', to:'/exhibitions', component:Exhibitions },
   { children:'Zena',key:'zena', to:'/zena', component:About },
   { children:'Contact',key:'con', to:'/contact', component:Contact }
 ]

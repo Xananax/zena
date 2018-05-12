@@ -1,5 +1,5 @@
 import { createElement as el, Component } from 'react'
-import { readImageFromFile } from './readImageFromFile'
+import { readImageFromFile } from '../readImageFromFile'
 import { field, fieldSelect, fieldRadio, fieldText, fieldTextArea, fieldInput, error as errorClass, hasError } from './Field.module.css'
 import classnames from 'classnames'
 
@@ -33,22 +33,27 @@ export const TextArea = ({ htmlFor, error, labelId:id, label, ...props }) =>
 export const Fieldset = ({ label, children, ...props }) => 
   el('fieldset', props, el('legend',null,label),children)
 
-export const FileInputButton  = ({ htmlFor, error, labelId:id, label, className, ...props }) => 
+export const FileInputButton = ({ htmlFor, error, labelId:id, label, className, value, ...props }) => 
   el('label',{ id, htmlFor,className:classnames(field,fieldText,fieldInput,className),'data-button':true},el('span',null,label),el('input',props),el(ErrorLabel,{ error, htmlFor })) 
 
 export class FileInput extends Component{
-  state = { files:[], error:null }
+  state = { files:[], value:this.props.value, error:null }
   onChange = (evt) => {
+
+    evt.persist()
+    const target = evt.target
     const files =Array.prototype.slice.call(evt.target.files)
+    const { name, multiple }= this.props
+    
     if(files.length){
       Promise.all(files.map(readImageFromFile))
         .then( files => {
           this.setState({files})
-          if(this.props.onChange){
-            this.props.onChange(files)
-          }
+          return files
         })
         .catch( err => this.setState({error:err.message}))
+        .then( ( files ) => this.props.onChange && this.props.onChange({...evt, target:{...target,name, multiple, type:'file',files:(multiple?files:files[0])}}) )
+        .catch( err => { throw err })
     }
   }
   renderItems(){
@@ -59,15 +64,19 @@ export class FileInput extends Component{
   renderItem = ({ file, image }) => {
     const key = file.name
     if(image){
-      const style = {display:'inline-block',width:100,height:100,backgroundSize:'cover',bakgroundPosition:'center center',backgroundImage:`url("${image.src}")`}
+      const style = {display:'inline-block',width:100,height:100,backgroundSize:'cover',backgroundPosition:'center center',backgroundImage:`url("${image.src}")`}
       return el('span',{key,style})
     }
     return el('span',{key},file.name)
   }
   render(){
+    const { renderItems, ...rest} = this.props
     const onChange = this.onChange
-    const props = { ...this.props, onChange}
-    return el('span',null,el(FileInputButton,props),this.renderItems())
+    const props = { ...rest, onChange}
+    if(renderItems){
+      return el('span',null,el(FileInputButton,props),this.renderItems())
+    }
+    return el(FileInputButton,props)
   }
 }
 
@@ -94,7 +103,7 @@ let ids = 0
 
 const getIdForField  = ( props ) => {
   if(props.id){ return props.id }
-  return 'field-'+( props.name || props.label.replace(/\s+/g,'-') || '' ) + (ids++)
+  return 'field-'+( props.name || (props.label && props.label.replace(/\s+/g,'-')) || '' ) + (ids++)
 }
 
 export const normalizeFieldProps = ({value,defaultValue,...props}) => {
@@ -106,7 +115,7 @@ export const normalizeFieldProps = ({value,defaultValue,...props}) => {
   const label = props.label || name
   const placeholder = props.placeholder || label
   const valueKey = props.onChange ? 'value' : 'defaultValue'
-  const valueProp = value || defaultValue
+  const valueProp = typeof value !== 'undefined' ? value : typeof defaultValue !== 'undefined' ? defaultValue : null;
   return { ...props, [valueKey]:valueProp, type, htmlFor, name, label, placeholder, id, labelId }
 }
 

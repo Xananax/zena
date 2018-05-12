@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { overlay, wrapper, inside, closeButton as closeButtonClass, modal, showWrapper } from './Modal.module.css'
+import { onEscape } from './onKeyDown'
 
 let node = null
 const getDomNode = () => {
@@ -24,3 +25,25 @@ export const Modal = ({ show, closeButton=true, onClose, children }) => ReactDOM
   </div>
   , getDomNode()
 )
+
+export class ModalWithTrigger extends React.Component{
+  state = { show: false }
+  toggle = () => this.setState({show:!this.state.show})
+  onCancel = () => this.setState({show:false})
+  componentDidMount(){
+    onEscape(this.onCancel)
+  }
+  render(){
+    const { children, trigger } = this.props
+    const { show } = this.state
+    const { toggle, onCancel } = this
+    return (
+      <>
+        <Modal show={show} closeButton={true} onClose={onCancel}>
+          { children }
+        </Modal>
+        { trigger({ toggle, show })}
+      </>
+    )
+  }
+}

@@ -42,3 +42,4 @@ const onKeyDown = (key) => (listener) => {
 
 
 export const onEscape = onKeyDown(27)
+export const onEnter = onKeyDown(13)

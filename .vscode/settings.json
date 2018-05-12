@@ -1,8 +1,11 @@
 {
     "editor.tabSize": 2,
     "cSpell.words": [
+        "Unmount",
         "datetime",
-        "firestore"
+        "firestore",
+        "slugify",
+        "validators"
     ],
     "npm.enableScriptExplorer": true
 }

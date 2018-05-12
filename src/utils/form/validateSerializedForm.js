@@ -1,7 +1,7 @@
 export const validate = ( validator, value ) => {
   try{
     const newValue = validator(value)
-    if(typeof newValue !== 'undefined' && newValue !== value && !errors.length){
+    if(typeof newValue !== 'undefined' && newValue !== value){
       return { newValue}
     }
     return { value }
@@ -10,27 +10,27 @@ export const validate = ( validator, value ) => {
   }
 }
 
-export const validateSerializedForm = ( validators, fields, stopAtFirst ) => {
+export const validateSerializedForm = ( validators, values, stopAtFirst ) => {
   let hasErrors = false
   let hasNewValues = false
   const newValues = {}
   const errors = {}
   for (const [key, validator] of Object.entries(validators)) {
-    const { newValue, error } = validate(validator,fields[key])
-    if(isError){
+    const { newValue, error } = validate(validator,values[key])
+    if(error){
       hasErrors = true
       errors[key] = error
       if(stopAtFirst){
-        return { fields, errors, hasErrors }
+        return { values, errors, hasErrors }
       }
     }
-    if(newValue){
+    if(typeof newValue !== 'undefined'){
       hasNewValues = true
       newValues[key] = newValue
     }
   }
   if(hasErrors || hasNewValues){
-    return { fields:{...fields,...newValues}, errors, hasErrors }
+    return { values:{...values,...newValues}, errors, hasErrors, hasNewValues }
   }
-  return { fields, errors, hasErrors }
+  return { values, errors, hasErrors, hasNewValues }
 }

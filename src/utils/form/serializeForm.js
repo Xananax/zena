@@ -1,5 +1,14 @@
 const toArray = (thing) =>Array.prototype.slice.call(thing)
 
+export const getFiles = (fileInput) => {
+  const files = toArray(fileInput.files)
+  if(!files.length){ return }
+  if(fileInput.multiple){
+    return files
+  }
+  return files[0]
+}
+
 export const serializeForm = (form) => {
   const url = window.location.protocol+'//'+window.location.host
   const regex = new RegExp('^'+url+'/?','ig')
@@ -27,14 +36,11 @@ export const serializeForm = (form) => {
       serialized[name] = new Date(value); return;
     }
     if( type === 'file' ){
-      const files = toArray(input.files)
-      if(!files.length){ return }
-      if(input.multiple){
-        serialized[name] = files; return
-      }
-      serialized[name] = files[0]; return
+      const files = getFiles(input)
+      if(!files){ return }
+      serialized[name] = files
     }
     serialized[name] = value
   })
-  return { name, action, method, fields:serialized }
+  return { name, action, method, values:serialized }
 }
