@@ -11,6 +11,7 @@ export class Field extends Component{
     const props = { ...rest, tabIndex:1, className:classnames(className, css.editable, editMode && 'edit-mode') }
 
     const editor = editMode ? el(Input, {name,value,type,onChange,disabled,error}) : null
+    
     const element = type === 'file' ? el(tag, value ? {...props,...value } : props, editor ) : el(tag, props, value, editor)
     
     return element
@@ -56,7 +57,8 @@ export class Editable extends Component{
     const errors = {}
     const values = {}
     let hasErrors = false;
-    Object.keys(dirty).forEach( key => {
+    const keys = action === 'create' ? Object.keys(validators) : Object.keys(dirty)
+    keys.forEach( key => {
       const validator = validators[key]
       const value = fields[key]
       if(!validator){
@@ -83,7 +85,10 @@ export class Editable extends Component{
     dispatch(command).then(this.setMessage).catch(this.setError)
   }
 
-  setError = ({message}) => this.setState({message, messageType:css.errorMessage})
+  setError = (error) => {
+    this.setState({message:error.message, messageType:css.errorMessage})
+    console.error(error)
+  }
 
   setMessage = ({action}) => this.setState({message:`${action} successful!`, messageType:css.message})
 
@@ -101,7 +106,7 @@ export class Editable extends Component{
     const yep = window.confirm('are you sure you want to delete this item?')
     if(!yep){ return }
     this.setState({locked:true})
-    dispatch(command).then(this.setMessage).catch(this.setError)
+    dispatch(command).catch(this.setError)
   }
 
   componentDidMount(){

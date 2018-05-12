@@ -3,9 +3,8 @@ import { Content } from '../wrappers/Content'
 import { Image } from '../utils/Image'
 import { validators, subscribe, defaults } from '../data/events'
 import { dispatch } from '../data/controller'
-import { Spinner } from '../utils/Spinner'
 import { Editable, Hidden } from '../utils/form/Editable'
-import { ModalWithTrigger } from '../utils/Modal'
+import { ReactFire } from '../utils/ReactFire'
 import css from './Exhibitions.module.css'
 
 export const Event = ({ action, ...values}) =>
@@ -18,27 +17,13 @@ export const Event = ({ action, ...values}) =>
   </Editable>
 
 
-export class Exhibitions extends React.Component{
-
-  state = { events: [], loading:true }
-  
-  componentDidMount(){ this.unsubscribe = subscribe( events => this.setState({events,loading:false})) }
-
-  componentWillUnmount(){ this.unsubscribe && this.unsubscribe(); }
-
+export class Exhibitions extends ReactFire{
+  static Component = Event
+  static subscribe = subscribe
   render(){
-    const { state:{ events, loading } } = this
     return (
       <Content title="Events & Exhibitions">
-        { loading
-        ? <Spinner inverted/>
-        : <>
-          { events.map(event=><Event action="update" key={event.id} {...event}/>)}
-          <ModalWithTrigger trigger={({toggle})=><button className="ok big" onClick={toggle}>+</button>}>
-            <Event action="create"/>
-          </ModalWithTrigger>
-          </>
-        }
+        { this.renderContent() }
       </Content>
     )
   }

@@ -1,16 +1,13 @@
 import { uploadImage, removeFile, collectionToArray, db } from './firebase'
 import { slugify } from '../utils/slugify'
 
-const collection = db.collection('events')
+const collection = db.collection('images')
 
 export const validators = {
-  title(val){
-    if(!val){
-      throw new Error('title is mandatory')
-    }
-  },
   image(val){
-    if(!val){ return }
+    if(!val){ 
+      throw new Error(`image is mandatory`)
+    }
     const { file, free, image } = val
     if(!image){
       throw new Error('file must be a valid image')
@@ -18,39 +15,41 @@ export const validators = {
     free && free()
     return file
   },
-  rank(val){
-    if(!val){ return 0 }
-    val = parseInt(val)
-    if(isNaN(val)){ throw new Error('rank must be a number')}
-    return val;
+  categories(val){
+    if(!val || !val.length){
+      throw new Error(`you need to include at least one category`)
+    }
+    if(typeof val === 'string'){
+      return val.split(',').map(s=>s.trim())
+    }
   }
 }
 
 export const defaults = {
   title:'',
-  date:'',
   image:null,
   rank:0,
-  description:''
+  description:'',
+  categories:[]
 }
 
 const processDocs = cb => docList => cb(collectionToArray(docList))
 
 export const get = (cb) => collection.get().then(processDocs(cb)).catch(e=>{throw e})
 
-export const subscribe = (cb) => collection.orderBy('rank','desc').onSnapshot(processDocs(cb))
+export const subscribe = (cb) => collection.onSnapshot(processDocs(cb))
 
 export const process = ({ action,id,values }) => {
+  console.log(action,id,values)
   return uploadImage(values && values.image).then( image => {
-    const event = image && image.url ? {...values,image:{id:image.id, width:image.width,height:image.height,url:image.url}} : values
+    const item = image && image.url ? {...values,image:{id:image.id, width:image.width,height:image.height,url:image.url}} : values
     if( action === 'create' ){
-      return collection.add({...event, slug:slugify(event.title)})
+      return collection.add({...item, slug:item.title && slugify(item.title) || '' })
     }else if(id){
       const doc = collection.doc(id)
       if(action === 'update'){
-        return doc.set(event,{merge:true})
+        return doc.set(item,{merge:true})
       }else if(action === 'delete'){
-        console.log('ddddd')
         return doc.get().then( item => {
           const {image} = item.data();
           if(image){

@@ -23,13 +23,23 @@ export const upload = (path, file, meta) => (
     .then(  metadata => ({ ...metadata, contentType:file.type, file }) )
     .then( ({ file, image, ...rest }) => {
       const metadata = { ...rest, ...meta }
+      const id = path + '/' + file.name
       return storageRef
-        .child( path + '/' + file.name )
+        .child( id )
         .put( file,  metadata )
         .then( snapshot => snapshot.ref.getDownloadURL() )
-        .then( url => ({ ...metadata, image, url }) )
+        .then( url => ({ ...metadata, image, id, url }) )
         .catch( err => { throw err })
     })
   : Promise.resolve(null)
 )
+
+export const collectionToArray = docList =>{
+  const docs = []
+  docList.forEach(doc=>docs.push({...doc.data(),id:doc.id}))
+  return docs
+}
+
+export const removeFile = (id) => storageRef.child(id).delete()
+
 export const uploadImage = (file, meta) => upload( 'images', file, meta )

@@ -1,25 +1,47 @@
 import React from 'react'
 import { Content } from '../wrappers/Content'
-import { press, yearTitle } from './Press.module.css'
+import css from './Press.module.css'
+import { validators, subscribe, defaults } from '../data/press'
+import { dispatch } from '../data/controller'
+import { Editable } from '../utils/form/Editable'
+import { ReactFire } from '../utils/ReactFire'
 
-export const DocumentLink = ({extension,title,src}) => {
-  return <a href={src} title={title+'.'+extension}>{title}</a>
+export const DocumentLink = ({url,type, children}) => {
+  return <div><a href={url}>{type}</a>{children}</div>
 }
 
+export const DocumentDate = ({ children, ...props }) => 
+  <h4 {...props}>
+    { children }
+  </h4>
+
+export const PressItem = ({action,...values}) =>
+  <Editable action={action} collection="press" dispatch={dispatch} className={css.item} values={values} validators={validators} defaults={defaults}>
+    <h2 className={css.title} name="title"/>
+    <DocumentDate className={css.date} name="date" inputType="date"/>
+    <div className={css.description} name="description" inputType="textarea"/>
+    {/* <DocumentLink className={css.file} name="file" inputType="text"/> */}
+    <h4 className={css.title} name="file" inputType="file"/>
+  </Editable>
+
+
 export const Year = ({year, documents}) => (
-  <div className={press}>
-    <h2 className={yearTitle}>{year}</h2>
-    <p>
+  <div className={css.press}>
+    <h2 className={css.yearTitle}>{year}</h2>
+    <p>.orderBy('date','desc')
     { documents.map((doc)=><DocumentLink {...doc}/>) }
     </p>
   </div>
 )
 
-export const Press = ({ documents }) => (
-  <Content title="Press & Media">
-    <Year year={2018} documents={documents}/>
-    <Year year={2017} documents={documents}/>
-    <Year year={2016} documents={documents}/>
-    <Year year={2015} documents={documents}/>
-  </Content>
-)
+export class Press extends ReactFire{
+  static Component = PressItem
+  static subscribe = subscribe
+  render(){
+    return (
+      <Content title="Press & Media">
+        { this.renderContent() }
+      </Content>
+    )
+  }
+}

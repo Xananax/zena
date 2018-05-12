@@ -33,6 +33,11 @@ export const NumberInput = ({ value:v, ...props }) => {
   return el(Input,{...props,value}) 
 }
 
+export const DateInput = ({ value:v, ...props }) => {
+  const value = v instanceof Date ? v+'' : v
+  return el(Input,{...props,value}) 
+}
+
 export const TextArea = ({ htmlFor, error, labelId:id, label, ...props }) => 
   el('label',{ id, htmlFor,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props), el(ErrorLabel,{ error, htmlFor }))
 
@@ -147,6 +152,9 @@ export const Field = (_props) => {
   }
   if(type === 'number' || type === 'range'){
     return el(Input,props)
+  }
+  if(type === 'date'){
+    return el(DateInput,props)
   }
   return el(Input,props)
 }
