@@ -17,6 +17,8 @@ export class Field extends Component{
   }
 }
 
+export const Hidden = ({ className, children }) => children ? el('span',{className},children) : null
+
 export class Editable extends Component{
   state = {
     editMode:false,
@@ -49,17 +51,24 @@ export class Editable extends Component{
   onBlur = this.off
 
   submit = () => {
-    const { values:{id, ...values } } = this.state
+    const { values:{id, ...fields }, dirty } = this.state
     const { collection, dispatch, action, validators } = this.props
     const errors = {}
+    const values = {}
     let hasErrors = false;
-    validators && Object.keys(validators).forEach( key => {
+    Object.keys(dirty).forEach( key => {
       const validator = validators[key]
+      const value = fields[key]
+      if(!validator){
+        values[key] = value
+        return
+      }
       try{
-        const result = validator(values[key])
-        if(typeof result !== 'undefined' && typeof result !== values[key]){
-          values[key] = result
-        }
+        const result = validator(value)
+        values[key] = ( typeof result !== 'undefined' && typeof result !== fields[key]
+        ? result
+        : value
+        )
       }catch(e){
         hasErrors = true
         errors[key] = e
@@ -168,13 +177,25 @@ export class Editable extends Component{
 
     const editMode = this.isEditMode()
     const { values, original, locked:disabled, errors } = this.state
-    const { children, className } = this.props
+    const { children, className, defaults } = this.props
     const { onSubmit, onDoubleClick, onChange } = this
 
     const _children = Children.map( children, child => {
       const { type:tag, props:{ inputType, ...props } } = child
       if(('name' in props) && props.name){
-        const value = (editMode ? values[props.name] : original[props.name]) || ''
+        const name = props.name
+        const defaultValue = name in defaults ? defaults[name] : ''
+        const isHidden = tag === Hidden
+        const value = ( editMode 
+          ? ( name in values 
+            ? values[name]
+            : defaultValue
+            )
+          : ( isHidden
+            ? undefined
+            : original[name] || defaultValue 
+            )
+        )
         const fieldProps = { ...props, editMode, disabled, tag, type:inputType, value, onChange, onSubmit, error:errors[props.name] }
         return el(Field,fieldProps)
       }

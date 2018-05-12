@@ -15,7 +15,21 @@ export const validators = {
     }
     free && free()
     return file
+  },
+  rank(val){
+    if(!val){ return }
+    val = parseInt(val)
+    if(isNaN(val)){ throw new Error('rank must be a number')}
+    return val;
   }
+}
+
+export const defaults = {
+  title:'',
+  date:'',
+  image:null,
+  rank:0,
+  description:''
 }
 
 const processDocs = cb => docList =>{

@@ -17,7 +17,10 @@ export const readImageFromFile = (file) => new Promise(( resolve, reject )=>{
       return resolve({ file, image, width, height, url:image.src, extension, free })
   };
 
-  image.onerror = reject
+  image.onerror = (evt) => {
+    console.log(evt)
+    reject(new Error('could not load file'))
+  }
     
   image.src = window.URL.createObjectURL(file);
 })

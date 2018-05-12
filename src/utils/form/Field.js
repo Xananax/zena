@@ -27,6 +27,12 @@ export const Radio = ({ id, error, name, items, ...props }) => (
 export const Input = ({ htmlFor, labelId:id, error, label, ...props }) => 
   el('label',{ id, htmlFor, className:classnames(field,fieldText)},el('span',null,label),el('input',props), el(ErrorLabel,{ error, htmlFor }))
 
+export const NumberInput = ({ value:v, ...props }) => {
+  const value = (typeof v !== 'undefined' && v!=='' && v!==null) ? parseInt(v) : v
+  if(isNaN(value)){ return el(Input,{...props,value:0})}
+  return el(Input,{...props,value}) 
+}
+
 export const TextArea = ({ htmlFor, error, labelId:id, label, ...props }) => 
   el('label',{ id, htmlFor,className:classnames(field,fieldTextArea)},el('span',null,label),el('textarea',props), el(ErrorLabel,{ error, htmlFor }))
 
@@ -48,11 +54,11 @@ export class FileInput extends Component{
     if(files.length){
       Promise.all(files.map(readImageFromFile))
         .then( files => {
-          this.setState({files})
+          this.setState({files,error:null})
           return files
         })
-        .catch( err => this.setState({error:err.message}))
-        .then( ( files ) => this.props.onChange && this.props.onChange({...evt, target:{...target,name, multiple, type:'file',files:(multiple?files:files[0])}}) )
+        .catch( error => this.setState({error}))
+        .then( ( files ) => files && this.props.onChange && this.props.onChange({...evt, target:{...target,name, multiple, type:'file',files:(multiple?files:files[0])}}) )
         .catch( err => { throw err })
     }
   }
@@ -70,9 +76,11 @@ export class FileInput extends Component{
     return el('span',{key},file.name)
   }
   render(){
-    const { renderItems, ...rest} = this.props
+    const { renderItems, error:propErr, ...rest} = this.props
+    const { error:stateErr } = this.state
     const onChange = this.onChange
-    const props = { ...rest, onChange}
+    const error = stateErr || propErr
+    const props = { ...rest, onChange, error}
     if(renderItems){
       return el('span',null,el(FileInputButton,props),this.renderItems())
     }
@@ -136,6 +144,9 @@ export const Field = (_props) => {
   }
   if(type === 'file'){
     return el(FileInput,props)
+  }
+  if(type === 'number' || type === 'range'){
+    return el(Input,props)
   }
   return el(Input,props)
 }

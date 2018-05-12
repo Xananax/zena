@@ -23,6 +23,7 @@
 .controls{
   float:left;
   clear:left;
+  grid-area: controls;
 }
 
 .editable label > span{

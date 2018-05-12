@@ -9,11 +9,13 @@
   padding:1em;
   display:grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: 
-    "a d"
-    "b d"
-    "c d";
+    "a right"
+    "b right"
+    "c right"
+    "d right"
+    "controls controls";
   border-top:1px solid #ccc;
   margin-top:1.58rem;
 }
@@ -40,18 +42,22 @@
   grid-area: b;
 }
 
+.rank{
+  grid-area: c;
+}
+
 .description{
   composes:info;
   font-size:.8em;
   margin-bottom:.3em;
-  grid-area: c;
+  grid-area: d;
 }
 
 .image{
   width:10em;
   height:10em;
   float:right;
-  grid-area: d;
+  grid-area: right;
   align-self: flex-end;
   justify-self: end;
   align-self: start;
