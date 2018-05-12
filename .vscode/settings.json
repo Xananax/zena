@@ -2,10 +2,22 @@
     "editor.tabSize": 2,
     "cSpell.words": [
         "Unmount",
+        "browserslist",
         "datetime",
         "firestore",
+        "predeploy",
         "slugify",
-        "validators"
+        "validators",
+        "zena"
     ],
-    "npm.enableScriptExplorer": true
+    "npm.enableScriptExplorer": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*node_modules":true,
+        ".vscode":true
+    }
 }
