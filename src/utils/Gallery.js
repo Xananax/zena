@@ -3,6 +3,7 @@ import GalleryImage from './GalleryImage'
 import { galleryImage, gallery, galleryItem } from './Gallery.module.css'
 
 export class Gallery extends React.Component{
+
   static getDerivedStateFromProps({ images }, prevState) {
     if (images !== prevState.images) {
       const newImages = { }
@@ -31,10 +32,10 @@ export class Gallery extends React.Component{
   setImageStatus = (src,status) => this.setState((prevState)=>({...prevState,loaded:{...prevState.loaded,[src]:{status}}}))
 
   renderImage(image){
-    const { src, width, height } = typeof image === 'string' ? {src:image} : image
+    const { src, width, height, url } = typeof image === 'string' ? {src:image} : image
     const { onSuccess, onError, onLoad } = this
-    const props = { onSuccess, onError, onLoad, src, width, height, className:galleryImage }
-    return <div key={src} className={galleryItem}><GalleryImage alt="" {...props}/></div>
+    const props = { onSuccess, onError, onLoad, src, width, height, className:galleryImage, url }
+    return <div key={src||url} className={galleryItem}><GalleryImage alt="" {...props}/></div>
   }
   render(){
     return (

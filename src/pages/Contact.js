@@ -6,6 +6,8 @@ export const Contact = ({zena}) => (
     <h1>Zena Assi</h1>
     <img src={zena[0].src} alt={zena[0].basename.replace('-',' ')}/>
     <p>za@zenaassi.com</p>
-    <p>+804448883</p>
+    <p>London - Uk</p>
+    <p>ARTSAWA gallery www.artsawa.com, DIFC, Dubai, UAE</p>
+    <p>ALWANE gallery 00961 1975250, Saifi Village, Beirut, Lebanon</p>
   </Content>
 )

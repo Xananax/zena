@@ -97,6 +97,10 @@
   margin-bottom:1px;
 }
 
+.menuItem h3 a::before{
+  content:none;
+}
+
 .menuItem a.active::before, .menuItem a:hover::before{
   background:#733433;
 }

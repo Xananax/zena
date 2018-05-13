@@ -4,7 +4,7 @@
 }
 
 .message{
-  position: absolute;
+  position: fixed;
   top:0;
   padding:.2em;
   z-index:4;
@@ -21,7 +21,6 @@
 }
 
 .controls{
-  float:left;
   clear:left;
   grid-area: controls;
 }

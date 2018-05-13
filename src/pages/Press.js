@@ -6,33 +6,16 @@ import { dispatch } from '../data/controller'
 import { Editable } from '../utils/form/Editable'
 import { ReactFire } from '../utils/ReactFire'
 
-export const DocumentLink = ({url,type, children}) => {
-  return <div><a href={url}>{type}</a>{children}</div>
+export const DocumentLink = ({ className, url, id, type, children}) => {
+  return <span className={className}><a title={(id||'').split('/').pop()} href={url}>download</a>{children}</span>
 }
-
-export const DocumentDate = ({ children, ...props }) => 
-  <h4 {...props}>
-    { children }
-  </h4>
 
 export const PressItem = ({action,...values}) =>
   <Editable action={action} collection="press" dispatch={dispatch} className={css.item} values={values} validators={validators} defaults={defaults}>
-    <h2 className={css.title} name="title"/>
-    <DocumentDate className={css.date} name="date" inputType="date"/>
-    <div className={css.description} name="description" inputType="textarea"/>
-    {/* <DocumentLink className={css.file} name="file" inputType="text"/> */}
-    <h4 className={css.title} name="file" inputType="file"/>
+    <span className={css.title} name="title"/>
+    <span className={css.date} name="date" inputType="date"/>
+    <DocumentLink className={css.file} name="file" inputType="file"/>
   </Editable>
-
-
-export const Year = ({year, documents}) => (
-  <div className={css.press}>
-    <h2 className={css.yearTitle}>{year}</h2>
-    <p>.orderBy('date','desc')
-    { documents.map((doc)=><DocumentLink {...doc}/>) }
-    </p>
-  </div>
-)
 
 export class Press extends ReactFire{
   static Component = PressItem
@@ -40,7 +23,9 @@ export class Press extends ReactFire{
   render(){
     return (
       <Content title="Press & Media">
-        { this.renderContent() }
+        <div className={css.main}>
+          { this.renderContent() }
+        </div>
       </Content>
     )
   }

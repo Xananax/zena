@@ -28,7 +28,7 @@ class App extends Component {
             <h3>Work</h3>
             { galleryLinks.map((props)=><NavLink {...props}/>) }
             <hr/>
-            { links.map(({component,...props})=><NavLink {...props}/>) }
+            { links.map(({component,...props})=><h3 key={props.key}><NavLink {...props}/></h3>) }
           </Nav>
           <Switch>
             { pages.map(({component,to:path,key,exact})=><ContextRoute path={path} key={key} exact={exact} component={component} context={data}/>)}

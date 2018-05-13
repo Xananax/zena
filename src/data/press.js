@@ -58,5 +58,5 @@ export const process = ({ action,id,values }) => {
         .then( () => doc.delete())
       }
     }
-  })
+  }).catch(err=>{throw err})
 }

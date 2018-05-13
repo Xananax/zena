@@ -1,5 +1,5 @@
 import { uploadImage, removeFile, collectionToArray, db } from './firebase'
-import { slugify } from '../utils/slugify'
+import { cleanObject } from '../utils/cleanObject'
 
 const collection = db.collection('events')
 
@@ -29,8 +29,7 @@ export const validators = {
 export const defaults = {
   title:'',
   date:'',
-  image:null,
-  rank:0,
+  rank:10,
   description:''
 }
 
@@ -38,13 +37,15 @@ const processDocs = cb => docList => cb(collectionToArray(docList))
 
 export const get = (cb) => collection.get().then(processDocs(cb)).catch(e=>{throw e})
 
-export const subscribe = (cb) => collection.orderBy('rank','desc').onSnapshot(processDocs(cb))
+export const subscribe = (cb) => collection.orderBy('rank').onSnapshot(processDocs(cb))
 
 export const process = ({ action,id,values }) => {
   return uploadImage(values && values.image).then( image => {
-    const event = image && image.url ? {...values,image:{id:image.id, width:image.width,height:image.height,url:image.url}} : values
+    const event = values && cleanObject(image && image.url ? {...values,image:{id:image.id, width:image.width,height:image.height,url:image.url}} : values)
     if( action === 'create' ){
-      return collection.add({...event, slug:slugify(event.title)})
+      if(!event.rank){ event.rank = 10 }
+      console.log('create',event)
+      return collection.add(event)
     }else if(id){
       const doc = collection.doc(id)
       if(action === 'update'){

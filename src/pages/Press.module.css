@@ -1,11 +1,12 @@
-.press p{
+.mains{
   columns: 2 12em;
 }
 
-.press p a{
-  display: block;
+.date{
+  color:rgb(129, 129, 129);
 }
 
-.yearTitle{
-  color:rgb(97, 97, 97);
+.file a{
+  text-decoration: underline;
+  font-size: .7em;
 }

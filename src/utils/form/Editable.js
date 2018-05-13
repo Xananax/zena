@@ -18,7 +18,7 @@ export class Field extends Component{
   }
 }
 
-export const Hidden = ({ className, children }) => children ? el('span',{className},children) : null
+export const Hidden = ({ className, children }) => children && children.filter(Boolean).length ? el('span',{className},children) : null
 
 export class Editable extends Component{
   state = {
@@ -29,10 +29,15 @@ export class Editable extends Component{
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
+    console.log(nextProps)
+    if('editMode' in nextProps){
+      return { editMode:nextProps.editMode }
+    }
     if(nextProps.values && nextProps.values !== prevState.original){
       const state = {
         values:  nextProps.values,
         original:nextProps.values,
+        editMode: ('editMode' in nextProps) ? nextProps.editMode : prevState.editMode,
         locked:false,
         valid:true,
         dirty:{},
@@ -57,7 +62,7 @@ export class Editable extends Component{
     const errors = {}
     const values = {}
     let hasErrors = false;
-    const keys = action === 'create' ? Object.keys(validators) : Object.keys(dirty)
+    const keys = Object.keys(dirty)
     keys.forEach( key => {
       const validator = validators[key]
       const value = fields[key]
@@ -80,6 +85,7 @@ export class Editable extends Component{
       this.setState({ errors, valid:false }) 
       return 
     }
+    console.log(values)
     const command = { action, collection, id, values }
     this.setState({locked:true, valid:true})
     dispatch(command).then(this.setMessage).catch(this.setError)

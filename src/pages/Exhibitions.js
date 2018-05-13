@@ -9,11 +9,11 @@ import css from './Exhibitions.module.css'
 
 export const Event = ({ action, ...values}) =>
   <Editable action={action} collection="events" dispatch={dispatch} className={css.event} values={values} validators={validators} defaults={defaults}>
-    <h2 className={css.title} name="title"/>
-    <h4 className={css.date} name="date"/>
+    <Image cover className={css.image} loaded name="image" inputType="file"/>
+    <h4 className={css.title} name="title"/>
+    <h5 className={css.date} name="date"/>
     <Hidden className={css.rank} name="rank" inputType="number"/>
     <div className={css.description} name="description" inputType="textarea"/>
-    <Image cover className={css.image} loaded name="image" inputType="file"/>
   </Editable>
 
 
