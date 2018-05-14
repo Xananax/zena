@@ -1,7 +1,7 @@
 @import './typography.scss';
-@import '../node_modules/picnic/src/picnic';
-@import '../node_modules/picnic/src/plugins/nav/plugin';
-@import '../node_modules/picnic/src/plugins/modal/plugin';
+@import '../../node_modules/picnic/src/picnic';
+@import '../../node_modules/picnic/src/plugins/nav/plugin';
+@import '../../node_modules/picnic/src/plugins/modal/plugin';
 
 body
   { background:#fdfdfd;

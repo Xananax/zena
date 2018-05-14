@@ -7,7 +7,7 @@ import { Articles } from './Pages/Articles'
 import { Events } from './Pages/Events'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css'
+import './styles/App.css'
 
 export const App = () =>
   <ScrollToTopOnPageChange>
