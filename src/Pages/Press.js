@@ -1,6 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { toast } from 'react-toastify';
+import { seasonFromMonth } from '../utils/seasonFromMonth'
 import { isEditMode } from '../utils/isEditMode'
 import { Content } from '../Components/Content'
 import { Page } from '../Components/Page'
@@ -60,18 +61,23 @@ const handleFiles = (process) => (evt) => {
   }
 }
 
-const PressItem = ({ year, month, name, day, url, extension }) =>
-  <div className="file">{name}</div>
+const PressItem = ({ year, month, name, day, title, url, extension, process }) =>
+  <div className="press-file">
+    { seasonFromMonth(month) } { year } - { title }
+    <a href={url} title={`download ${name}`} data-tooltip={`download ${name}`}>
+      <span>▼ download</span>
+    </a>
+  </div>
 
 const PressItems = (_year) => ({ process, items, loading, updating }) => 
   <Page>
     <Content>
-      { (_year ? items.filter(({year})=>(year === _year)) : items ).map(({id, title, file}) => el(PressItem, { key:id, ...file }))}
+      { (_year ? items.filter(({year})=>(year === _year)) : items ).map(({id, file, ...props }) => el(PressItem, { key:id, process, ...file, ...props }))}
       { isEditMode() && <input type="file" multiple onChange={handleFiles(process)}/> }
     </Content>
   </Page>
 
 export const Press = ({match:{ params:{year} }}) => 
-  <FirebaseProvider collection="press" prepare={prepare} orderBy="year">
+  <FirebaseProvider collection="press" prepare={prepare} orderBy={['time','desc']}>
     { PressItems(year) }
   </FirebaseProvider>
