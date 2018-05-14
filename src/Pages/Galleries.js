@@ -4,6 +4,7 @@ import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '..
 import { toast } from 'react-toastify';
 import { Content } from '../Components/Content'
 import { isEditMode } from '../utils/isEditMode'
+import { Page } from '../Components/Page'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -61,10 +62,12 @@ const Image = ({ratioWidth, url, description, process, id}) =>
   </div>
 
 const Gallery = (category) => ({ process, items, loading, updating }) => 
-  <Content>
-    { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(Image, { key:id, id, ratioWidth, url, description, process }))}
-    { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
-  </Content>
+  <Page>
+    <Content>
+      { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(Image, { key:id, id, ratioWidth, url, description, process }))}
+      { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
+    </Content>
+  </Page>
 
 export const Galleries = ({match:{ params:{category} }}) => 
   <FirebaseProvider collection='images' prepare={prepare} orderBy="image.id">

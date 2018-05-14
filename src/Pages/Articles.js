@@ -9,6 +9,7 @@ import { render } from '../utils/markdown'
 import { Pane } from '../Components/Pane'
 import { Content } from '../Components/Content'
 import { isEditMode } from '../utils/isEditMode'
+import { Page } from '../Components/Page'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -121,9 +122,11 @@ const ArticlesList = (article_slug) => ({ process, items, loading, updating }) =
     }
   }
   return (
-    <Content>
-      { content }
-    </Content>
+    <Page>
+      <Content>
+        { content }
+      </Content>
+    </Page>
   )
 }
 

@@ -57,3 +57,33 @@ body
     ; @extend .stretch
     }
   }
+
+nav .burger
+  { position: relative
+  ; span
+    { display:none 
+    }
+  ; &::after, &::before
+    { content: ''
+    ; display: inline-block
+    ; height: 1em
+    ; width: 1em
+    ; top:0
+    ; left:0
+    ; border-color:black
+    ; border-style: solid none
+    ; border-width: .1em
+    }
+  ; &::after
+    { height: .5em
+    ; position: absolute
+    ; border-style: solid none none none
+    ; left: -1em
+    }
+  }
+
+nav .show:checked ~ .burger
+  { &::after, &::before
+    { content: none
+    }
+  }

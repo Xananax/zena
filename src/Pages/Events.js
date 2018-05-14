@@ -8,6 +8,7 @@ import { serializeForm } from '../utils/serializeForm'
 import { render } from '../utils/markdown'
 import { isEditMode } from '../utils/isEditMode'
 import { Content } from '../Components/Content'
+import { Page } from '../Components/Page'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -122,9 +123,9 @@ const EventsList = (id) => ({ process, items, loading, updating }) => {
     }
   }
   return (
-    <div>
+    <Page>
       { content }
-    </div>
+    </Page>
   )
 }
 
