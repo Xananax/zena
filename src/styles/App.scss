@@ -8,6 +8,11 @@ body
   { background:#fdfdfd;
   }
 
+p a
+  { color:inherit
+  ; border-bottom: 1px solid #494949
+  }
+
 .content
   { width: 100%
   ; max-width:60em

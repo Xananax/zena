@@ -1,1 +1,1 @@
-export const isEditMode = () => window.location.href.indexOf('editMode') >= 0
+export const isEditMode = () => window.location.href.indexOf('edit') >= 0

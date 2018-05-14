@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/signature.svg'
-import { links } from '../nav'
+import { links } from '../data/links'
 import { NavLink } from 'react-router-dom'
 
 export const Nav = () => 

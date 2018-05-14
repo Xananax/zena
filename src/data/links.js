@@ -1,10 +1,4 @@
-export const galleries = [
-  [ 'bouquets', 'bouquets' ],
-  [ 'cities', 'cities' ],
-  [ 'installations', 'installation' ],
-  [ 'portraits', 'portraits' ],
-  [ 'still nature', 'still-nature' ]
-]
+import { galleries } from './galleries' 
 
 export const links = [
   { children:'Works', to:'/gallery', className:'main' },

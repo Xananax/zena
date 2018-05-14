@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { Content } from '../Components/Content'
 import { isEditMode } from '../utils/isEditMode'
 import { Page } from '../Components/Page'
-import { galleries } from '../nav'
+import { galleries } from '../data/galleries'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
