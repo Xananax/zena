@@ -1,6 +1,5 @@
 import React, { createElement as el } from 'react'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
 import { toast } from 'react-toastify'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { slugify } from '../utils/slugify'
@@ -10,6 +9,7 @@ import { Pane } from '../Components/Pane'
 import { Content } from '../Components/Content'
 import { isEditMode } from '../utils/isEditMode'
 import { Page } from '../Components/Page'
+import { Img } from '../Components/Img'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -51,9 +51,7 @@ const prepare = (item, action, batch) => {
 
 const Image = ({ratioHeight, url, description, process, id}) =>
   <div className="article-image">
-    <LazyLoad height={'100%'}>
-        <img alt={description} src={url} width="100%" height="100%"/>
-    </LazyLoad>
+    <Img alt={description} src={url} width="100%" height="100%"/>
   </div>
 
 class Editor extends React.Component{

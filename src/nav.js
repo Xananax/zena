@@ -1,4 +1,4 @@
-const galleries = [
+export const galleries = [
   [ 'bouquets', 'bouquets' ],
   [ 'cities', 'cities' ],
   [ 'installations', 'installation' ],

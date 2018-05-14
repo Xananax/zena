@@ -16,7 +16,7 @@ export const App = () =>
       <Route path="/events/:event?"     component={Events}/>
       <Route path="/articles/:article?" component={Articles}/>
       <Route path="/press/:year?"       component={Press}/>
-      <Route path="/gallery/:category"  component={Galleries}/>
+      <Route path="/gallery/:category?"  component={Galleries}/>
       <Route component={NotFound}/>
     </Switch>
     <ToastContainer/>

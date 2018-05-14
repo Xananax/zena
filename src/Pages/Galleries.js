@@ -1,10 +1,12 @@
 import React, { createElement as el } from 'react'
-import LazyLoad from 'react-lazyload';
+import { Link } from 'react-router-dom'
+import { Img } from '../Components/Img'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { toast } from 'react-toastify';
 import { Content } from '../Components/Content'
 import { isEditMode } from '../utils/isEditMode'
 import { Page } from '../Components/Page'
+import { galleries } from '../nav'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -52,22 +54,34 @@ const handleFiles = (category, process) => (evt) => {
 
 const Image = ({ratioWidth, url, description, process, id}) =>
   <div className="gallery-image" style={{width:'100%', paddingBottom:(ratioWidth*100)+'%'}} title={description}>
-    <LazyLoad height={'100%'}>
-        <img alt={description} src={url} width="100%" height="100%"/>
-    </LazyLoad>
+    <Img alt={description} src={url} width="100%" height="100%"/>
     { isEditMode() && <div className="controls">
       <button onClick={()=>process(DELETE,{id})}>×</button>
       </div>
     }
   </div>
 
-const Gallery = (category) => ({ process, items, loading, updating }) => 
-  <Page>
-    <Content>
-      { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(Image, { key:id, id, ratioWidth, url, description, process }))}
-      { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
-    </Content>
-  </Page>
+const Gallery = (category) => ({ process, items, loading, updating }) => {
+  if(!category){
+    return (
+      <Page>
+        <Content>
+          <div className="gallery-router-links">
+            { galleries.map(([children,path])=><Link to={`/gallery/${path}`} key={path}>{children}</Link>)}
+          </div>
+        </Content>
+      </Page>
+    )
+  }
+  return (
+    <Page>
+      <Content>
+        { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(Image, { key:id, id, ratioWidth, url, description, process }))}
+        { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
+      </Content>
+    </Page>
+  )
+}
 
 export const Galleries = ({match:{ params:{category} }}) => 
   <FirebaseProvider collection='images' prepare={prepare} orderBy="image.id">

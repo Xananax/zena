@@ -1,6 +1,6 @@
 import React, { createElement as el } from 'react'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
+import { Img } from '../Components/Img'
 import { toast } from 'react-toastify'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { slugify } from '../utils/slugify'
@@ -93,9 +93,7 @@ class Editor extends React.Component{
 
 const Image = ({ratioHeight, url, description, process, id}) =>
   <div className="article-image">
-    <LazyLoad height={'100%'}>
-        <img alt={description} src={url} width="100%" height="100%"/>
-    </LazyLoad>
+    <Img alt={description} src={url} width="100%" height="100%"/>
   </div>
 
 const Event = ({ id, slug, html, title, text, image, process, editMode }) => 
