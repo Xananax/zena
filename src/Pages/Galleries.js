@@ -3,6 +3,7 @@ import LazyLoad from 'react-lazyload';
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { toast } from 'react-toastify';
 import { Content } from '../Components/Content'
+import { isEditMode } from '../utils/isEditMode'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -53,15 +54,16 @@ const Image = ({ratioWidth, url, description, process, id}) =>
     <LazyLoad height={'100%'}>
         <img alt={description} src={url} width="100%" height="100%"/>
     </LazyLoad>
-    <div className="controls">
+    { isEditMode() && <div className="controls">
       <button onClick={()=>process(DELETE,{id})}>×</button>
-    </div>
+      </div>
+    }
   </div>
 
 const Gallery = (category) => ({ process, items, loading, updating }) => 
   <Content>
     { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(Image, { key:id, id, ratioWidth, url, description, process }))}
-    <input type="file" multiple onChange={handleFiles(category,process)}/>
+    { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
   </Content>
 
 export const Galleries = ({match:{ params:{category} }}) => 

@@ -1,6 +1,8 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { toast } from 'react-toastify';
+import { isEditMode } from '../utils/isEditMode'
+import { Content } from '../Components/Content'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -61,10 +63,10 @@ const PressItem = ({ year, month, name, day, url, extension }) =>
   <div className="file">{name}</div>
 
 const Page = (_year) => ({ process, items, loading, updating }) => 
-  <div>
+  <Content>
     { (_year ? items.filter(({year})=>(year === _year)) : items ).map(({id, title, file}) => el(PressItem, { key:id, ...file }))}
-    <input type="file" multiple onChange={handleFiles(process)}/>
-  </div>
+    { isEditMode() && <input type="file" multiple onChange={handleFiles(process)}/> }
+  </Content>
 
 export const Press = ({match:{ params:{year} }}) => 
   <FirebaseProvider collection="press" prepare={prepare} orderBy="year">

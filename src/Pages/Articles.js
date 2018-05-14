@@ -8,7 +8,7 @@ import { serializeForm } from '../utils/serializeForm'
 import { render } from '../utils/markdown'
 import { Pane } from '../Components/Pane'
 import { Content } from '../Components/Content'
-
+import { isEditMode } from '../utils/isEditMode'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -91,14 +91,14 @@ class Editor extends React.Component{
   }
 } 
 
-const Article = ({ id, slug, html, title, text, image, process, editMode=true }) => 
+const Article = ({ id, slug, html, title, text, image, process, editMode }) => 
   <div>
     { image && <Image {...image}/>
     }
     <h1>{title}</h1>
-    <button onClick={()=>process(DELETE,{id})}>delete</button>
+    { isEditMode() && <button onClick={()=>process(DELETE,{id})}>delete</button> }
     <Pane value={html}/>
-    { editMode && <Editor action="update" text={text} title={title} id={id} slug={slug} process={process}/> }
+    { isEditMode() && <Editor action="update" text={text} title={title} id={id} slug={slug} process={process}/> }
   </div>
 
 const ArticleMini = ({ slug, title }) => 

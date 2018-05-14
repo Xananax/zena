@@ -6,6 +6,8 @@ import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '..
 import { slugify } from '../utils/slugify'
 import { serializeForm } from '../utils/serializeForm'
 import { render } from '../utils/markdown'
+import { isEditMode } from '../utils/isEditMode'
+import { Content } from '../Components/Content'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
