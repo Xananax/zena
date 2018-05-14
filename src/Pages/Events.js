@@ -5,15 +5,18 @@ import { Page, Img, Content, Pane, Link, FullWidthImage } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
-    const { image, title, text, slug:_slug, id } = item
+    const { image, title, text, slug:_slug, id, date_from, date_to } = item
     const slug = _slug || slugify(title)
     const props = {
       title,
       text,
       html:renderMarkdown(text),
       slug,
-      id:id||slug
+      id:id||slug ,
+      date_from,
+      date_to
     }
+    console.log(props)
     if(image){
       const toastId = toast(`⏳ uploading ${image.name} 0%`, { type: toast.TYPE.INFO, autoClose: false });
       const onProgress = ( file, progress ) => toast.update(toastId, { render:`⏳ uploading ${file.name} ${ parseInt(progress*100,10) }%` });
@@ -124,10 +127,15 @@ const Event = ({ id, slug, html, title, text, image, process, editMode }) =>
     { isEditMode() && <Editor action="update" text={text} title={title} id={id} slug={slug} process={process} image={image}/> }
   </div>
 
-const EventMini = ({ slug, title }) => 
-  <h3>
-    <Link to={`/events/${slug}`}>{title}</Link>
-  </h3>
+const EventMini = ({ slug, title, date_from, date_to }) => 
+  <div>
+    <h4>
+      <Link to={`/events/${slug}`}>{title}</Link>
+    </h4>
+    <p>
+      {date_from}
+    </p>
+  </div>
 
 const EventsList = (event_slug) => ({ process, items, loading, updating }) => {
   let content;

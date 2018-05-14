@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, renderMarkdown, serializeForm, slugify, toast } from '../utils'
-import { Page, Img, Content, Pane, Link, FullWidthImage } from '../Components'
+import { Page, Content, Pane, Link, FullWidthImage } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){

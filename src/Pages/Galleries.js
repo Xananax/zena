@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, toast } from '../utils'
-import { Page, Content, Img, Link, FullWidthImage } from '../Components'
+import { Page, Content, Link, FullWidthImage } from '../Components'
 import { galleries } from '../data/galleries'
 
 const prepare = (item, action, batch) => {
