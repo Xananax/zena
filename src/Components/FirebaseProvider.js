@@ -1,5 +1,5 @@
 import React from 'react'
-import { db, storage } from './firebaseConfig'
+import { db, storage } from '../data/firebaseConfig'
 import { readImageFromFile } from '../utils/readImageFromFile'
 
 export const upload = (path, file, meta, onProgress) => (
