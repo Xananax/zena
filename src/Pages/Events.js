@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, renderMarkdown, serializeForm, slugify, toast, readImageFromFile } from '../utils'
-import { Page, Img, Content, Pane, Link, FullWidthImage } from '../Components'
+import { Page, Img, Content, Pane, Link } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -102,7 +102,7 @@ class Editor extends React.Component{
               <textarea style={style} onChange={this.onChange(renderMarkdown)} name="text" placeholder="text" defaultValue={text}/>
               <Pane value={html} style={style}/>
               <div style={{width:'100%', float:'left'}} className="mini-text">
-                <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">help</a>
+                <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="noopener noreferrer">help</a>
               </div>
             </div>
             <div style={{width:'200px', clear:'both'}}>
@@ -119,7 +119,7 @@ class Editor extends React.Component{
 
 const Event = ({ id, slug, html, title, text, image, process, editMode }) => 
   <div>
-    { image && <FullWidthImage {...image}/>
+    { image && <Image {...image}/>
     }
     <h1>{title}</h1>
     { isEditMode() && <button onClick={()=>process(DELETE,{id})}>delete</button> }
