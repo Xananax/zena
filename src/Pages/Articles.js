@@ -1,15 +1,7 @@
 import React, { createElement as el } from 'react'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { slugify } from '../utils/slugify'
-import { serializeForm } from '../utils/serializeForm'
-import { render } from '../utils/markdown'
-import { Pane } from '../Components/Pane'
-import { Content } from '../Components/Content'
-import { isEditMode } from '../utils/isEditMode'
-import { Page } from '../Components/Page'
-import { Img } from '../Components/Img'
+import { isEditMode, render, serializeForm, slugify, toast } from '../utils'
+import { Page, Img, Content, Pane, Link } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){

@@ -1,14 +1,7 @@
 import React, { createElement as el } from 'react'
-import { Link } from 'react-router-dom'
-import { Img } from '../Components/Img'
-import { toast } from 'react-toastify'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { slugify } from '../utils/slugify'
-import { serializeForm } from '../utils/serializeForm'
-import { render } from '../utils/markdown'
-import { isEditMode } from '../utils/isEditMode'
-import { Content } from '../Components/Content'
-import { Page } from '../Components/Page'
+import { isEditMode, render, serializeForm, slugify, toast } from '../utils'
+import { Content, Page, Img, Link } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -98,7 +91,7 @@ const Image = ({ratioHeight, url, description, process, id}) =>
 
 const Event = ({ id, slug, html, title, text, image, process, editMode }) => 
   <div>
-    <Image {...image}/>
+    { image && <Image {...image}/>}
     <h1>{title}</h1>
     <button onClick={()=>process(DELETE,{id})}>delete</button>
     <Pane value={html}/>
@@ -122,7 +115,9 @@ const EventsList = (id) => ({ process, items, loading, updating }) => {
   }
   return (
     <Page>
-      { content }
+      <Content>
+        { content }
+      </Content>
     </Page>
   )
 }

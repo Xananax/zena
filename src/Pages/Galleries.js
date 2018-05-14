@@ -1,11 +1,7 @@
 import React, { createElement as el } from 'react'
-import { Link } from 'react-router-dom'
-import { Img } from '../Components/Img'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { toast } from 'react-toastify';
-import { Content } from '../Components/Content'
-import { isEditMode } from '../utils/isEditMode'
-import { Page } from '../Components/Page'
+import { isEditMode, toast } from '../utils'
+import { Page, Content, Img, Link } from '../Components'
 import { galleries } from '../data/galleries'
 
 const prepare = (item, action, batch) => {

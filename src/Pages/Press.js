@@ -1,10 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { toast } from 'react-toastify';
-import { seasonFromMonth } from '../utils/seasonFromMonth'
-import { isEditMode } from '../utils/isEditMode'
-import { Content } from '../Components/Content'
-import { Page } from '../Components/Page'
+import { isEditMode, seasonFromMonth, toast } from '../utils'
+import { Page, Content } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){

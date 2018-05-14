@@ -1,6 +1,5 @@
 import React from 'react'
-import { Content } from '../Components/Content'
-import { Page } from '../Components/Page'
+import { Page, Content } from '../Components'
 
 export const NotFound = ({match:{ url }}) => 
   <Page>
