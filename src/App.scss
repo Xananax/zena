@@ -1,0 +1,59 @@
+@import './typography.scss';
+@import '../node_modules/picnic/src/picnic';
+@import '../node_modules/picnic/src/plugins/nav/plugin';
+@import '../node_modules/picnic/src/plugins/modal/plugin';
+
+body
+  { background:red;
+  }
+
+.content
+  { width: 100%
+  ; max-width:60em
+  ; margin:7em auto
+  ; padding:1em
+  ; box-sizing: border-box
+  }
+  
+
+.stretch
+  { top:0
+  ; left:0
+  ; right:0
+  ; bottom:0
+  }
+
+.image
+  { background:#2a2a2a
+  ; position: relative;
+  ; margin-bottom:1em
+  ; img
+    { @extend .stretch
+    ; position: absolute
+    }
+  ; .controls
+    { position: absolute
+    ; top:.5em
+    ; right:.5em
+    }
+  }
+
+.gallery-image
+  { @extend .image
+  ; height:0
+  }
+
+.article-image
+  { width: 100%
+  ; height: 0
+  ; padding-bottom: 50%
+  ; text-align: center
+  ; position: relative;
+  ; img
+    { height:100%
+    ; width:auto
+    ; position: absolute;
+    ; margin:0 auto
+    ; @extend .stretch
+    }
+  }

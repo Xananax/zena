@@ -14,7 +14,10 @@ export const readImageFromFile = (file) => new Promise(( resolve, reject )=>{
   image.onload = () => {
       const { naturalHeight:height, naturalWidth:width } = image
       const free = () => window.URL.revokeObjectURL( image.src );
-      return resolve({ file, image, width, height, url:image.src, extension, free })
+      const orientation = width > height ? 'landscape' : height > width ? 'portrait' : 'square'
+      const ratioWidth = height/width
+      const ratioHeight = width/height
+      return resolve({ file, image, width, height, url:image.src, ratioWidth, ratioHeight, orientation, extension, free })
   };
 
   image.onerror = (evt) => {
@@ -24,5 +27,3 @@ export const readImageFromFile = (file) => new Promise(( resolve, reject )=>{
     
   image.src = window.URL.createObjectURL(file);
 })
-
-export default readImageFromFile

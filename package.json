@@ -2,43 +2,29 @@
   "name": "zena",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://xananax.github.io/zena",
   "dependencies": {
-    "@firebase/app-types": "^0.3.1",
     "classnames": "^2.2.5",
+    "concurrently": "^3.5.1",
     "firebase": "^5.0.2",
-    "gh-pages": "^1.1.0",
-    "image-size": "^0.6.2",
+    "node-sass-chokidar": "^1.3.0",
+    "picnic": "^6.5.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-lazyload": "^2.3.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^2.0.0-next.66cc7a90",
-    "typography": "^0.16.6"
+    "react-scripts": "1.1.4",
+    "react-toastify": "^4.0.1",
+    "remarkable": "^1.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:react": "react-scripts start",
+    "start:sass": "npm run build:sass && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build:react": "react-scripts build",
+    "build:sass": "node-sass-chokidar src/ -o src/",
+    "start": "concurrently --kill-others-on-fail --names \"react,sass\" \"npm run start:react\" \"npm run start:sass\"",
+    "build": "npm run build:sass && npm run build:react",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "assets:clean": "rm ./src/assets/articles.js && rm ./src/assets/images.js",
-    "assets:articles": "cd ./src/assets/ && node read-directory.js ./articles ./articles.js",
-    "assets:images": "cd ./src/assets/ && node read-directory.js ./images ./images.js",
-    "assets": "npm run assets:articles && npm run assets:images",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">1%",
-      "last 4 versions",
-      "Firefox ESR",
-      "not ie < 11"
-    ]
+    "eject": "react-scripts eject"
   }
 }
