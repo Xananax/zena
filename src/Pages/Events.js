@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { isEditMode, render, serializeForm, slugify, toast } from '../utils'
-import { Content, Page, Img, Link } from '../Components'
+import { render, serializeForm, slugify, toast } from '../utils'
+import { Content, Page, Img } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -57,7 +57,7 @@ class Editor extends React.Component{
     if(!title){ return this.setState({error:`title is mandatory`}) }
     if(!date_from){ return this.setState({error:`starting date is mandatory`}) }
     this.setState({error:null})
-    console.log(data.values)
+    console.log(action, process, data.values)
     //process(action, data.values)
   }
   onChange = (evt) => {

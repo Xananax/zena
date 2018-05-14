@@ -1,11 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { ScrollToTopOnPageChange } from './Components/ScrollToTopOnPageChange'
-import { Galleries } from './Pages/Galleries'
-import { Press } from './Pages/Press'
-import { Articles } from './Pages/Articles'
-import { Events } from './Pages/Events'
-import { NotFound } from './Pages/NotFound'
+import { ScrollToTopOnPageChange } from './Components'
+import { Galleries, Press, Articles, Events, NotFound } from './Pages'
 import { ToastContainer } from 'react-toastify';
 import './styles/App.css'
 
