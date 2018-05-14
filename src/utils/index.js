@@ -1,5 +1,5 @@
 export * from './isEditMode'
-export * from './markdown'
+export * from './renderMarkdown'
 export * from './readImageFromFile'
 export * from './seasonFromMonth'
 export * from './serializeForm'

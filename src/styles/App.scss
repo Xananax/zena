@@ -43,6 +43,10 @@ p a
     }
   }
 
+.full-width-image
+  { @extend .image
+  }
+
 .gallery-image
   { @extend .image
   ; height:0
@@ -77,6 +81,15 @@ p a
     ; margin-left: 1em
     }
 
+  }
+
+.mini-text
+  { font-size: .6em
+  ; padding: .3em
+  }
+
+.dropimage
+  { padding-bottom: 75%
   }
 
 nav

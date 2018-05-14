@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { isEditMode, render, serializeForm, slugify, toast } from '../utils'
-import { Page, Img, Content, Pane, Link } from '../Components'
+import { isEditMode, renderMarkdown, serializeForm, slugify, toast } from '../utils'
+import { Page, Img, Content, Pane, Link, FullWidthImage } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -10,7 +10,7 @@ const prepare = (item, action, batch) => {
     const props = {
       title,
       text,
-      html:render(text),
+      html:renderMarkdown(text),
       slug,
       id:id||slug
     }
@@ -41,11 +41,6 @@ const prepare = (item, action, batch) => {
   }
 }
 
-const Image = ({ratioHeight, url, description, process, id}) =>
-  <div className="article-image">
-    <Img alt={description} src={url} width="100%" height="100%"/>
-  </div>
-
 class Editor extends React.Component{
   state = { html:'' }
   handleForm = (evt) => {
@@ -62,7 +57,7 @@ class Editor extends React.Component{
   }
   onChange = (evt) => {
     const value = evt.target.value
-    this.setState({html:render(value)})
+    this.setState({html:renderMarkdown(value)})
   }
   render(){
     const { id, slug, title, text } = this.props
@@ -84,7 +79,7 @@ class Editor extends React.Component{
 
 const Article = ({ id, slug, html, title, text, image, process, editMode }) => 
   <div>
-    { image && <Image {...image}/>
+    { image && <FullWidthImage {...image}/>
     }
     <h1>{title}</h1>
     { isEditMode() && <button onClick={()=>process(DELETE,{id})}>delete</button> }

@@ -9,4 +9,4 @@ const md = new Remarkable({
   quotes: '“”‘’',
 });
 
-export const render = (text) => md.render(text)
+export const renderMarkdown = (text) => md.render(text)

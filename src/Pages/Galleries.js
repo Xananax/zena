@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, toast } from '../utils'
-import { Page, Content, Img, Link } from '../Components'
+import { Page, Content, Img, Link, FullWidthImage } from '../Components'
 import { galleries } from '../data/galleries'
 
 const prepare = (item, action, batch) => {
@@ -48,14 +48,14 @@ const handleFiles = (category, process) => (evt) => {
   }
 }
 
-const Image = ({ratioWidth, url, description, process, id}) =>
-  <div className="gallery-image" style={{width:'100%', paddingBottom:(ratioWidth*100)+'%'}} title={description}>
-    <Img alt={description} src={url} width="100%" height="100%"/>
-    { isEditMode() && <div className="controls">
-      <button onClick={()=>process(DELETE,{id})}>×</button>
+const GalleryImage = ({ editMode, remove, ...props}) =>
+  <FullWidthImage className="gallery-image">
+    { editMode && remove && 
+      <div className="controls">
+        <button onClick={remove}>×</button>
       </div>
     }
-  </div>
+  </FullWidthImage>
 
 const Gallery = (category) => ({ process, items, loading, updating }) => {
   if(!category){
@@ -69,10 +69,11 @@ const Gallery = (category) => ({ process, items, loading, updating }) => {
       </Page>
     )
   }
+  const editMode = isEditMode()
   return (
     <Page>
       <Content>
-        { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(Image, { key:id, id, ratioWidth, url, description, process }))}
+        { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(GalleryImage, { key:id, id, ratioWidth, url, description, remove:process.bind(null,DELETE,{id}), editMode }))}
         { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
       </Content>
     </Page>

@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
-import { render, serializeForm, slugify, toast } from '../utils'
-import { Content, Page, Img } from '../Components'
+import { isEditMode, renderMarkdown, serializeForm, slugify, toast, readImageFromFile } from '../utils'
+import { Page, Img, Content, Pane, Link, FullWidthImage } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -10,14 +10,14 @@ const prepare = (item, action, batch) => {
     const props = {
       title,
       text,
-      html:render(text),
+      html:renderMarkdown(text),
       slug,
       id:id||slug
     }
     if(image){
       const toastId = toast(`⏳ uploading ${image.name} 0%`, { type: toast.TYPE.INFO, autoClose: false });
       const onProgress = ( file, progress ) => toast.update(toastId, { render:`⏳ uploading ${file.name} ${ parseInt(progress*100,10) }%` });
-      return upload(`/articles`,image, {}, onProgress).then( ({ free, image:img, ...image }) => {
+      return upload(`/events`,image, {}, onProgress).then( ({ free, image:img, ...image }) => {
         toast.update(toastId, { render:`✓ ${image.name} uploaded!`, autoClose:3000 });
         free && free()
         return ({ ...props, image })
@@ -41,9 +41,17 @@ const prepare = (item, action, batch) => {
   }
 }
 
-const Pane = ({value:__html}) => (
-  <div dangerouslySetInnerHTML={{__html}}/>
-)
+const Image = ({ratioHeight, url, description, process, id}) =>
+  <div className="event-image">
+    <Img alt={description} src={url} width="100%" height="100%"/>
+  </div>
+
+const fileToImage = (files) => {
+  if(!files || !files[0]){
+    return null
+  }
+  return readImageFromFile(files[0]).then(({url})=>url)
+}
 
 class Editor extends React.Component{
   state = { html:'' }
@@ -53,63 +61,85 @@ class Editor extends React.Component{
     const form = evt.target;
     const data = serializeForm(form)
     const { action, process } = this.props
-    const { title, date_from } = data.values
+    const { title, text } = data.values
     if(!title){ return this.setState({error:`title is mandatory`}) }
-    if(!date_from){ return this.setState({error:`starting date is mandatory`}) }
+    if(!text){ return this.setState({error:`text is mandatory`}) }
     this.setState({error:null})
-    console.log(action, process, data.values)
-    //process(action, data.values)
+    process(action, data.values)
   }
-  onChange = (evt) => {
-    const value = evt.target.value
-    this.setState({html:render(value)})
+  // TODO: MEMOIZE
+  onChange = (transform) => (evt) => { 
+    const input = evt.target
+    const name = input.name
+    if(!name){ throw new Error(' onChange requires the input to have a name')}
+    const type = input.type
+    const inputValue = type === 'file' ? input.files : type === 'checkbox' ? input.checked : input.value
+    Promise.resolve(transform ? transform(inputValue) : inputValue).then((value)=>{
+      if(typeof value !== 'undefined'){
+        this.setState({[name]:value})
+      }
+    })
   }
   render(){
-    const { id, slug, title, text, date_from, date_to } = this.props
-    const { html, error } = this.state
+    const { id, title, text, date_from, date_to, html:pHtml, image } = this.props
+    const { text:sHtml, error, image:sImage } = this.state
+    const html = sHtml || pHtml
+    const src = sImage ? sImage : image ? image.url : null
+    const imageStyle = src ? { backgroundImage:`url("${src}")`} : null
+    const style = { width:'50%', float:'left', padding:'2em', overflow:'auto', height:'15em' }
     return (
       <form onSubmit={this.handleForm}>
         { error && <div>{error}</div>}
-        <input type="hidden" name="id" defaultValue={id}/>
-        <input type="hidden" name="slug" defaultValue={slug}/>
-        <input name="title" placeholder="title" defaultValue={title}/>
-        <input name="date_from" placeholder="starting date" type="date" defaultValue={date_from}/>
-        <input name="date_to" placeholder="end date" type="date" defaultValue={date_to}/>
-        <textarea onChange={this.onChange} name="text" placeholder="text" defaultValue={text}/>
-        <input type="file" name="image"/>
-        <Pane value={html}/>
+        <div style={{width:'100%',float:'left'}}>
+            <input type="hidden" name="id" defaultValue={id}/>
+            <input name="title" placeholder="title" defaultValue={title}/>
+            <input name="date_from" placeholder="starting date" type="date" defaultValue={date_from}/>
+            <input name="date_to" placeholder="end date" type="date" defaultValue={date_to}/>
+            <div style={{float:'left', width:'100%'}}>
+              <textarea style={style} onChange={this.onChange(renderMarkdown)} name="text" placeholder="text" defaultValue={text}/>
+              <Pane value={html} style={style}/>
+              <div style={{width:'100%', float:'left'}} className="mini-text">
+                <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">help</a>
+              </div>
+            </div>
+            <div style={{width:'200px', clear:'both'}}>
+              <label className="dropimage" style={imageStyle}>
+                <input title="Drop image or click me" name="image" type="file" onChange={this.onChange(fileToImage)}/>
+              </label>
+            </div>
+        </div>
         <input type="submit" value="ok"/>
       </form>
     )
   }
 } 
 
-const Image = ({ratioHeight, url, description, process, id}) =>
-  <div className="article-image">
-    <Img alt={description} src={url} width="100%" height="100%"/>
-  </div>
-
 const Event = ({ id, slug, html, title, text, image, process, editMode }) => 
   <div>
-    { image && <Image {...image}/>}
+    { image && <FullWidthImage {...image}/>
+    }
     <h1>{title}</h1>
-    <button onClick={()=>process(DELETE,{id})}>delete</button>
+    { isEditMode() && <button onClick={()=>process(DELETE,{id})}>delete</button> }
     <Pane value={html}/>
-    { editMode && <Editor action="update" text={text} title={title} id={id} slug={slug} process={process}/> }
+    { isEditMode() && <Editor action="update" text={text} title={title} id={id} slug={slug} process={process} image={image}/> }
   </div>
 
+const EventMini = ({ slug, title }) => 
+  <h3>
+    <Link to={`/events/${slug}`}>{title}</Link>
+  </h3>
 
-const EventsList = (id) => ({ process, items, loading, updating }) => {
+const EventsList = (event_slug) => ({ process, items, loading, updating }) => {
   let content;
-  if(!id){
-    content = items.map( event => el(Event, { key:event.id, process, ...event }))
+  if(!event_slug){
+    content = items.map( event => el(EventMini, { key:event.id, process, ...event }))
   }else{
-    if(id==='new'){
+    if(event_slug==='new'){
       content = <Editor action="create" process={process}/>
     }else{
-      const item = items.find(({slug})=>(slug===id))
-      if(item){
-        content = el(Event, { process, ...item })
+      const event = items.find(({slug})=>(slug===event_slug))
+      if(event){
+        content = el(Event, { process, ...event })
       }
     }
   }
