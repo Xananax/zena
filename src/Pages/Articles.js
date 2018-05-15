@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, renderMarkdown, serializeForm, slugify, toast } from '../utils'
-import { Page, Content, Pane, Link, FullWidthImage } from '../Components'
+import { Page, Content, Pane, Link, FullWidthImage, Loading } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -94,7 +94,11 @@ const ArticleMini = ({ slug, title }) =>
 
 const ArticlesList = (article_slug) => ({ process, items, loading, updating }) => {
   let content;
-  if(!article_slug){
+  loading = true
+  if(loading){
+    content = <Loading/>
+  }
+  else if(!article_slug){
     content = items.map( article => el(ArticleMini, { key:article.id, process, ...article }))
   }else{
     if(article_slug==='new'){

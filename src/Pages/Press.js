@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, seasonFromMonth, toast } from '../utils'
-import { Page, Content } from '../Components'
+import { Page, Content, Loading } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -66,13 +66,24 @@ const PressItem = ({ year, month, name, day, title, url, extension, process }) =
     </a>
   </div>
 
-const PressItems = (_year) => ({ process, items, loading, updating }) => 
-  <Page>
-    <Content>
-      { (_year ? items.filter(({year})=>(year === _year)) : items ).map(({id, file, ...props }) => el(PressItem, { key:id, process, ...file, ...props }))}
-      { isEditMode() && <input type="file" multiple onChange={handleFiles(process)}/> }
-    </Content>
-  </Page>
+const PressItems = (_year) => ({ process, items, loading, updating }) => {
+  let content;
+  if(loading){
+    content = <Loading/>
+  }
+  else{
+    content = [
+      ...(_year ? items.filter(({year})=>(year === _year)) : items ).map(({id, file, ...props }) => el(PressItem, { key:id, process, ...file, ...props })),
+    isEditMode() && <input key="file" type="file" multiple onChange={handleFiles(process)}/> ]
+  }
+  return (  
+    <Page>
+      <Content>
+        { content }
+      </Content>
+    </Page>
+  )
+}
 
 export const Press = ({match:{ params:{year} }}) => 
   <FirebaseProvider collection="press" prepare={prepare} orderBy={['time','desc']}>

@@ -1,8 +1,9 @@
-@import './typography.scss';
 @import '../../node_modules/picnic/src/picnic';
 @import '../../node_modules/picnic/src/plugins/nav/plugin';
 @import '../../node_modules/picnic/src/plugins/modal/plugin';
+@import './typography.scss';
 @import '../../node_modules/react-toastify/scss/main.scss';
+@import './spinner';
 
 body
   { background:#fdfdfd;
@@ -181,4 +182,14 @@ nav
         }
       }
     }
+  }
+
+.loading
+  { position: fixed
+  ; z-index: 9997
+  ; top: 0
+  ; left: 0
+  ; width: 100vw
+  ; height: 100vh
+  ; background: rgba(white,.7)
   }

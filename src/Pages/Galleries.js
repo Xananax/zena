@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, toast } from '../utils'
-import { Page, Content, Link, FullWidthImage } from '../Components'
+import { Page, Content, Link, FullWidthImage, Loading } from '../Components'
 import { galleries } from '../data/galleries'
 
 const prepare = (item, action, batch) => {
@@ -49,7 +49,7 @@ const handleFiles = (category, process) => (evt) => {
 }
 
 const GalleryImage = ({ editMode, remove, ...props}) =>
-  <FullWidthImage className="gallery-image">
+  <FullWidthImage className="gallery-image" {...props}>
     { editMode && remove && 
       <div className="controls">
         <button onClick={remove}>×</button>
@@ -58,23 +58,30 @@ const GalleryImage = ({ editMode, remove, ...props}) =>
   </FullWidthImage>
 
 const Gallery = (category) => ({ process, items, loading, updating }) => {
-  if(!category){
-    return (
-      <Page>
-        <Content>
-          <div className="gallery-router-links">
-            { galleries.map(([children,path])=><Link to={`/gallery/${path}`} key={path}>{children}</Link>)}
-          </div>
-        </Content>
-      </Page>
-    )
-  }
+  let content;
   const editMode = isEditMode()
+  if(loading){
+    content = <Loading/>
+  }else if(!category){
+    content = (
+      <div className="gallery-router-links">
+        { galleries.map(([children,path])=><Link to={`/gallery/${path}`} key={path}>{children}</Link>)}
+      </div>
+    )
+  }else{
+    content = [ 
+      ...items
+        .filter( ({categories}) => (categories && categories[category]))
+        .map(({id, description, image:{ratioWidth, url}}) => 
+          el(GalleryImage, { key:id, id, ratioWidth, url, description, remove:process.bind(null,DELETE,{id}), editMode })
+        ),
+      isEditMode() && <input key="file" type="file" multiple onChange={handleFiles(category,process)}/>
+    ]
+  }
   return (
     <Page>
       <Content>
-        { items.filter(({categories})=>(categories && categories[category])).map(({id, description, image:{ratioWidth, url}}) => el(GalleryImage, { key:id, id, ratioWidth, url, description, remove:process.bind(null,DELETE,{id}), editMode }))}
-        { isEditMode() && <input type="file" multiple onChange={handleFiles(category,process)}/> }
+        { content }
       </Content>
     </Page>
   )

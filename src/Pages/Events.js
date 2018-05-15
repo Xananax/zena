@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, renderMarkdown, serializeForm, slugify, toast, readImageFromFile } from '../utils'
-import { Page, Img, Content, Pane, Link } from '../Components'
+import { Page, Img, Content, Pane, Link, Loading } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -139,7 +139,10 @@ const EventMini = ({ slug, title, date_from, date_to }) =>
 
 const EventsList = (event_slug) => ({ process, items, loading, updating }) => {
   let content;
-  if(!event_slug){
+  if(loading){
+    content = <Loading/>
+  }
+  else if(!event_slug){
     content = items.map( event => el(EventMini, { key:event.id, process, ...event }))
   }else{
     if(event_slug==='new'){
