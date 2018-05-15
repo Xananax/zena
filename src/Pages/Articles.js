@@ -95,7 +95,6 @@ const ArticleMini = ({ slug, title }) =>
 
 const ArticlesList = (article_slug) => ({ process, items, loading, updating }) => {
   let content;
-  loading = true
   if(loading){
     content = <Loading/>
   }
