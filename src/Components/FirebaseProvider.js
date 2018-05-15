@@ -135,10 +135,11 @@ export class FirebaseProvider extends React.Component{
     if(!('id' in item)){
       return Promise.reject(new Error(`updating an item without an id`))
     }
-    const ref = this.getOne(item.id)
+    const id = item.id
+    const ref = this.getOne(id)
     return ref.get().then( doc => {
       const item = doc.data()
-      return this.transaction(item, DELETE, batch)
+      return this.transaction({ ...item, id }, DELETE, batch)
         .then( item => { 
           batch.delete(ref);
           return item 

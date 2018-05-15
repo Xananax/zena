@@ -93,6 +93,36 @@ p a
   { padding-bottom: 75%
   }
 
+.event-image, .event-content
+  { width: 50%
+  }
+
+.event-image
+  { float:right
+  ; display: none
+  }
+
+.event-content
+  { float:left 
+  }
+
+.event
+  { border-top:1px solid #ccc
+  ; padding: 1em
+  ; &:first-of-type
+    { border-top-width: 0
+    ; .event-image
+      { display:block
+      }
+    }
+  ; &::after
+    { display:table
+    ; content: ''
+    ; width: 100%
+    ; clear:both
+    }
+  }
+
 nav
   { z-index: 9998;
   ; display: flex

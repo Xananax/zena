@@ -117,46 +117,54 @@ class Editor extends React.Component{
   }
 } 
 
-const Event = ({ id, slug, html, title, text, image, process, editMode }) => 
-  <div>
+const formatDate = (date) => date.replace(/-/g,'/')
+
+const EventMini = ({ id, slug, full, title, text, date_from, date_to, editMode, image, process }) => 
+  <div className={`event${full?' full':''}`}>
+    { ( editMode && full ) 
+    ? <Editor action="update" text={text} title={title} id={id} slug={slug} process={process} image={image}/>
+    : null 
+    }
+    <div className="event-content">
+      <h3>
+        { editMode && slug 
+        ? <Link to={`/events/${slug}`}>{title}</Link>
+        : title
+      }
+      </h3>
+      { editMode && id && <button onClick={()=>process(DELETE,{id})}>delete</button> }
+      { date_from && date_to 
+      ? <p>from { formatDate(date_from) } to { formatDate(date_to) }</p>
+      : date_from 
+      ? <p>{ formatDate(date_from) }</p>
+      : null
+      }
+    </div>
     { image && <Image {...image}/>
     }
-    <h1>{title}</h1>
-    { isEditMode() && <button onClick={()=>process(DELETE,{id})}>delete</button> }
-    <Pane value={html}/>
-    { isEditMode() && <Editor action="update" text={text} title={title} id={id} slug={slug} process={process} image={image}/> }
-  </div>
-
-const EventMini = ({ slug, title, date_from, date_to }) => 
-  <div>
-    <h4>
-      <Link to={`/events/${slug}`}>{title}</Link>
-    </h4>
-    <p>
-      {date_from}
-    </p>
   </div>
 
 const EventsList = (event_slug) => ({ process, items, loading, updating }) => {
   let content;
+  const editMode = isEditMode()
   if(loading){
     content = <Loading/>
   }
   else if(!event_slug){
-    content = items.map( event => el(EventMini, { key:event.id, process, ...event }))
+    content = items.map( event => el(EventMini, { key:event.id, process, editMode, ...event }))
   }else{
     if(event_slug==='new'){
       content = <Editor action="create" process={process}/>
     }else{
       const event = items.find(({slug})=>(slug===event_slug))
       if(event){
-        content = el(Event, { process, ...event })
+        content = el(EventMini, { process, editMode, full:true, ...event })
       }
     }
   }
   return (
     <Page>
-      <Content>
+      <Content title="Exhibitions & Events">
         { content }
       </Content>
     </Page>
