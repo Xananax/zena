@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom'
 
 export const Nav = () => 
   <nav className="demo">
-    <a href="/" className="brand">
+    <NavLink to="/" className="brand">
       <img className="logo" src={logo} alt="zena assi's signature"/>
-    </a>
+    </NavLink>
     <input id="bmenub" type="checkbox" className="show"/>
     <label htmlFor="bmenub" className="burger pseudo button">
       <span>menu</span>
