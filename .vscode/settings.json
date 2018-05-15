@@ -6,11 +6,13 @@
         "datetime",
         "dropimage",
         "firestore",
+        "keyframes",
         "linkify",
         "noopener",
         "noreferrer",
         "predeploy",
         "slugify",
+        "toastify",
         "validators",
         "zena"
     ],
