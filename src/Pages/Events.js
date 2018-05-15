@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, renderMarkdown, serializeForm, slugify, toast, readImageFromFile } from '../utils'
-import { Page, Img, Content, Pane, Link, Loading } from '../Components'
+import { Page, Img, Content, Pane, Link, Loading, Title } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -165,6 +165,7 @@ const EventsList = (event_slug) => ({ process, items, loading, updating }) => {
   return (
     <Page>
       <Content title="Exhibitions & Events">
+        <Title value="Exhibitions & Events"/>
         { content }
       </Content>
     </Page>

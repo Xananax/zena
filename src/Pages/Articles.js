@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, renderMarkdown, serializeForm, slugify, toast } from '../utils'
-import { Page, Content, Pane, Link, FullWidthImage, Loading } from '../Components'
+import { Page, Content, Pane, Link, FullWidthImage, Loading, Title } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -79,6 +79,7 @@ class Editor extends React.Component{
 
 const Article = ({ id, slug, html, title, text, image, process, editMode }) => 
   <div>
+    <Title value={title}/>
     { image && <FullWidthImage {...image}/>
     }
     <h1>{title}</h1>

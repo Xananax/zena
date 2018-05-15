@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, toast } from '../utils'
-import { Page, Content, Link, FullWidthImage, Loading } from '../Components'
+import { Page, Content, Link, FullWidthImage, Loading, Title } from '../Components'
 import { galleries } from '../data/galleries'
 
 const prepare = (item, action, batch) => {
@@ -81,6 +81,7 @@ const Gallery = (category) => ({ process, items, loading, updating }) => {
   return (
     <Page>
       <Content>
+        <Title value={ category || 'Works' }/>
         { content }
       </Content>
     </Page>

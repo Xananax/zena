@@ -1,7 +1,7 @@
 import React, { createElement as el } from 'react'
 import { FirebaseProvider, upload, removeFile, CREATE, DELETE, UPDATE } from '../Components/FirebaseProvider' 
 import { isEditMode, seasonFromMonth, toast } from '../utils'
-import { Page, Content, Loading } from '../Components'
+import { Page, Content, Loading, Title } from '../Components'
 
 const prepare = (item, action, batch) => {
   if(action === CREATE || action === UPDATE ){
@@ -79,6 +79,7 @@ const PressItems = (_year) => ({ process, items, loading, updating }) => {
   return (  
     <Page>
       <Content>
+        <Title value="Press"/>
         { content }
       </Content>
     </Page>

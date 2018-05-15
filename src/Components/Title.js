@@ -3,5 +3,10 @@ import Helmet from 'react-helmet'
 
 export const Title = ({value}) =>
   <Helmet>
-    <title>{value}</title>
+    <title>
+      { value
+      ? `Zena Assi | ${value}`
+      : `Zena Assi`
+      }
+    </title>
   </Helmet>
